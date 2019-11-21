@@ -208,7 +208,6 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
                                     public void onYes() {
                                         ((DrawerContentSlideActivity) context).popAllFragment();
                                     }
-
                                     @Override
                                     public void onNo() {
 
