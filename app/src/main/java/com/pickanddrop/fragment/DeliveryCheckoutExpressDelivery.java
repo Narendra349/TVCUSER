@@ -106,17 +106,17 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.4"));
         }
 
-
-        if (deliveryDTO.getDeliveryType().equalsIgnoreCase("2HOUR")) {
+        if (deliveryDTO.getDeliveryType().equalsIgnoreCase("SINGLE")) {
             deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
             deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
-        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("4HOUR")) {
+        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("MULTIPLE")) {
             deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
             deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
-        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("SAMEDAY")) {
+        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("EXPRESS")) {
             deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
             deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
         }
+
     }
 
     private void initToolBar() {

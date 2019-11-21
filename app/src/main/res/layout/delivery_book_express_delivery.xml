@@ -213,7 +213,7 @@
                             android:textColor="@color/white_color"
                             android:background="@drawable/two_hr"
                             android:padding="@dimen/activity_margin_normal"
-                            android:text="@string/twohours_text_maps"
+                            android:text="@string/single_delivery"
                             android:textSize="@dimen/text_size_normal"/>
 
                         <Button
@@ -227,7 +227,7 @@
                             android:textColor="@color/white_color"
                             android:background="@drawable/four_hr"
                             android:padding="@dimen/activity_margin_normal"
-                            android:text="@string/fourhours_text_maps"
+                            android:text="@string/multiple_delivery"
                             android:textSize="@dimen/text_size_normal"/>
 
                         <Button
@@ -241,7 +241,7 @@
                             android:gravity="center"
                             android:textColor="@color/white_color"
                             android:background="@drawable/same_day"
-                            android:text="@string/sameday_text_maps"
+                            android:text="@string/express_delivery"
                             android:textSize="@dimen/text_size_small"/>
                     </LinearLayout>
                 </LinearLayout>
