@@ -83,9 +83,10 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             e.printStackTrace();
         }
 
-        deliveryBookExpressDeliveryBinding.etDeliveryDate.setText(deliveryDTO.getDeliveryDate());
-        deliveryBookExpressDeliveryBinding.etDeliveryTime.setText(deliveryDTO.getDeliveryTime());
+        deliveryBookExpressDeliveryBinding.etDeliveryDate.setText(deliveryDTO.getPickupDate());
+        deliveryBookExpressDeliveryBinding.etDeliveryTime.setText(deliveryDTO.getPickupTime());
         deliveryBookExpressDeliveryBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.km));
+        deliveryBookExpressDeliveryBinding.etNoOfPallets.setText(deliveryDTO.getNoOfPallets());
 
         if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.bike))) {
             deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.4"));

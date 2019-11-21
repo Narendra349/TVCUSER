@@ -295,7 +295,7 @@
                         android:layout_weight="4"
                         android:gravity="center_vertical"
                         android:layout_gravity="center_vertical"
-                        android:text="@{String.format(@string/delivery_date).concat(@string/colon)}"
+                        android:text="@{String.format(@string/pickup_date_qua_txt).concat(@string/colon)}"
                         android:textColor="@color/white_color" />
 
                     <EditText
@@ -328,11 +328,44 @@
                         android:layout_weight="4"
                         android:gravity="center_vertical"
                         android:layout_gravity="center_vertical"
-                        android:text="@{String.format(@string/delivery_time).concat(@string/colon)}"
+                        android:text="@{String.format(@string/pickup_time).concat(@string/colon)}"
                         android:textColor="@color/white_color" />
 
                     <EditText
                         android:id="@+id/et_delivery_time"
+                        style="@style/edit_text_delivery_style"
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
+                        android:layout_marginLeft="@dimen/text_margin_small"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:focusable="false"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName|textCapWords" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/activity_margin_normal_"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        android:fontFamily="@font/titillium_regular"
+                        android:padding="@dimen/activity_margin_normal"
+                        android:layout_weight="4"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical"
+                        android:text="@{String.format(@string/number_of_pallets).concat(@string/colon)}"
+                        android:textColor="@color/white_color" />
+
+                    <EditText
+                        android:id="@+id/et_no_of_pallets"
                         style="@style/edit_text_delivery_style"
                         android:layout_width="0dp"
                         android:layout_weight="6"

@@ -273,12 +273,19 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                         float distanceInkms = (loc1.distanceTo(loc2)) / 1000;
 
                         int parcelCount = Integer.parseInt(deliveryDTO.getNoOfPallets());
+//                        if(parcelCount == 1){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletOne());
+//                        }else if(parcelCount == 2){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletTwo());
+//                        }else if(parcelCount >= 3){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletMore());
+//                        }
                         if(parcelCount == 1){
-                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletOne());
+                            totalDeliveryCost =  parcelCount * Double.parseDouble("250");
                         }else if(parcelCount == 2){
-                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletTwo());
+                            totalDeliveryCost =  parcelCount * Double.parseDouble("225");
                         }else if(parcelCount >= 3){
-                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletMore());
+                            totalDeliveryCost =  parcelCount * Double.parseDouble("200");
                         }
 
 //                        if (vehicleType.equalsIgnoreCase(getString(R.string.bike))) {
@@ -291,7 +298,8 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 //                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getTruck());
 //                        }
 
-                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat(otherDTO.getVehicle().getExpressPrice()));
+//                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat(otherDTO.getVehicle().getExpressPrice()));
+                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat("25"));
 
 //                        driverDeliveryCost = totalDeliveryCost - ((totalDeliveryCost * Float.parseFloat(otherDTO.getVehicle().getDriverPercentage()) / 100));
 
@@ -369,7 +377,8 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 
             float distanceInkms = (loc1.distanceTo(loc2)) / 1000;
             System.out.println("distanceInkms-->"+ distanceInkms);
-            if(distanceInkms <= (Float.parseFloat(otherDTO.getVehicle().getMaxDistance())))
+//            if(distanceInkms <= (Float.parseFloat(otherDTO.getVehicle().getMaxDistance())))
+            if(distanceInkms <= 30)
             createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
             else {
                 createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
