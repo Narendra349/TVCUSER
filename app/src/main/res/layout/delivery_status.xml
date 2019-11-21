@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_margin_medium"
+        android:fillViewport="true"
+        android:background="@drawable/bgo">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/app_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:theme="@style/AppTheme.AppBarOverlay"
+                app:elevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RelativeLayout
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+
+                    <ImageView
+                        android:id="@+id/iv_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:padding="@dimen/activity_margin_medium"
+                        android:src="@drawable/back_btn" />
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/titillium_regular"
+                        android:text="@string/delivery_status"
+                        android:textColor="@color/white_color"
+                        android:textSize="@dimen/text_size_extra_normal" />
+
+                </RelativeLayout>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_main"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edit_profile_rect"
+                android:padding="@dimen/activity_margin_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+                <com.pickanddrop.utils.ImageViewCircular
+                    android:id="@+id/iv_profile"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/user"
+                    app:layout_constraintBottom_toBottomOf="@id/ll_desc"
+                    app:layout_constraintEnd_toStartOf="@+id/ll_desc"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_vehicle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/truck_list"
+                    app:layout_constraintBottom_toBottomOf="@id/ll_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/ll_desc"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/ll_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_margin_normal_"
+                    android:layout_marginTop="@dimen/activity_margin_normal"
+                    android:layout_marginEnd="@dimen/activity_margin_normal_"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_vehicle"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/iv_profile"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_pickup_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/titillium_regular"
+                        android:gravity="center"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_extra_normal"
+                        tools:text="@string/pickup_loc_txt" />
+
+                    <TextView
+                        android:id="@+id/tv_drop_address"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_mini_"
+                        android:fontFamily="@font/titillium_regular"
+                        android:gravity="center"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_extra_normal"
+                        tools:text="@string/pickup_loc_txt" />
+
+                    <TextView
+                        android:id="@+id/tv_delivery_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_mini_"
+                        android:fontFamily="@font/titillium_regular"
+                        android:gravity="center"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_extra_normal"
+                        tools:text="@string/pickup_loc_txt" />
+
+                    <TextView
+                        android:id="@+id/tv_delivery_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/text_margin_mini_"
+                        android:fontFamily="@font/titillium_regular"
+                        android:gravity="center"
+                        android:textColor="@color/hint_color"
+                        android:textSize="@dimen/text_size_extra_normal"
+                        tools:text="@string/pickup_loc_txt" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_margin_medium"
+                    android:background="@drawable/accept_background"
+                    android:paddingStart="@dimen/activity_margin_medium"
+                    android:paddingTop="@dimen/text_margin_small"
+                    android:paddingEnd="@dimen/activity_margin_medium"
+                    android:paddingBottom="@dimen/text_margin_small"
+                    android:text="@string/get_proof"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_desc" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_margin_medium"
+                    android:src="@drawable/photo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_get" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_margin_medium"
+                    android:src="@drawable/sign"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_get" />
+
+                <TextView
+                    android:id="@+id/tv_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_margin_medium"
+                    android:text="@string/tekephoto_txt"
+                    android:textColor="@color/black_color"
+                    android:textSize="@dimen/text_size_normal"
+                    app:layout_constraintBottom_toBottomOf="@id/imageView2"
+                    app:layout_constraintEnd_toStartOf="@id/imageView3"
+                    app:layout_constraintStart_toEndOf="@id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@id/tv_get" />
+
+                <LinearLayout
+                    android:id="@+id/ll_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_margin_medium"
+                    android:background="@drawable/signupdriver"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/activity_margin_normal_"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imageView2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <com.pickanddrop.utils.ImageViewCircular
+                            android:id="@+id/iv_sign"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/sign" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin_mini_"
+                            android:text="@string/sign_up"
+                            android:textColor="@color/hint_color"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <com.pickanddrop.utils.ImageViewCircular
+                            android:id="@+id/iv_photo"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:src="@drawable/photo" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_margin_mini_"
+                            android:text="@string/photo"
+                            android:textColor="@color/hint_color"
+                            android:textSize="@dimen/text_size_normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_receiver"
+                    style="@style/edit_text_login_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_margin_medium"
+                    android:gravity="center"
+                    android:hint="@string/receiver_name"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPersonName|textCapWords"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ll_image" />
+            </android.support.constraint.ConstraintLayout>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin_medium"
+                android:layout_marginTop="@dimen/text_margin_xlarge"
+                android:layout_marginEnd="@dimen/activity_margin_medium"
+                android:layout_marginBottom="@dimen/activity_margin_medium"
+                android:background="@drawable/button_shape"
+                android:fontFamily="@font/titillium_regular"
+                android:minHeight="0dp"
+                android:paddingTop="@dimen/text_padding"
+                android:paddingBottom="@dimen/text_padding"
+                android:text="@string/submit"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/text_size_extra_normal"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_main" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</layout>

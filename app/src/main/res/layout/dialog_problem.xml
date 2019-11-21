@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="@dimen/activity_margin_medium">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/popupbackground"
+        android:padding="@dimen/activity_margin_medium"
+        android:minWidth="350dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <EditText
+            android:id="@+id/et_problems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine|textCapSentences"
+            android:hint="@string/comments_txt"
+            android:lines="4"
+            android:background="@drawable/popedit"
+            android:padding="@dimen/activity_margin_normal_"
+            android:textSize="@dimen/text_size_extra_normal"
+            android:fontFamily="@font/titillium_regular"
+            android:textColorHint="@color/text_hint"
+            android:textColor="@color/black_color"
+            android:gravity="start" />
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/popupdonebutton"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"
+            android:fontFamily="@font/titillium_regular"
+            android:text="@string/ok"
+            android:minHeight="0dp"
+            android:layout_marginTop="@dimen/activity_margin_medium"
+            android:padding="@dimen/activity_margin_normal_"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgo">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:elevation="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <RelativeLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/menu_new"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/activity_margin_medium"/>
+
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium_regular"
+                android:text="@string/home"
+                android:layout_centerInParent="true"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/text_size_extra_normal" />
+
+            <TextView
+                android:id="@+id/tv_deliveries"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium_regular"
+                android:text="@string/delivery"
+                android:paddingEnd="@dimen/activity_margin_normal_"
+                android:layout_centerVertical="true"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/text_size_extra_normal" />
+
+        </RelativeLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mv_home"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:minHeight="0dp"
+        android:textStyle="bold"
+        android:background="@drawable/button_shape"
+        android:textColor="@color/yellow"
+        android:visibility="gone"
+        android:fontFamily="@font/titillium_regular"
+        android:textSize="@dimen/text_size_extra_normal"
+        android:paddingTop="@dimen/text_padding"
+        android:paddingBottom="@dimen/text_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/mapbottomrect"
+        android:padding="@dimen/text_margin_small"
+        android:layout_margin="@dimen/activity_margin_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black_color"
+            android:layout_marginTop="@dimen/text_margin_mini"
+            android:textSize="@dimen/text_size_normal"
+            android:text="@string/bottom_text_maps"
+            android:fontFamily="@font/titillium_regular"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small">
+
+            <Button
+                android:id="@+id/btn_two"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:textColor="@color/white_color"
+                android:background="@drawable/two_hr"
+                android:padding="@dimen/activity_margin_normal"
+                android:text="@string/twohours_text_maps"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <Button
+                android:id="@+id/btn_four"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:textColor="@color/white_color"
+                android:background="@drawable/four_hr"
+                android:padding="@dimen/activity_margin_normal"
+                android:text="@string/fourhours_text_maps"
+                android:textSize="@dimen/text_size_normal"/>
+
+            <Button
+                android:id="@+id/btn_same"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:padding="@dimen/activity_margin_normal"
+                android:textAllCaps="false"
+                android:gravity="center"
+                android:textColor="@color/white_color"
+                android:background="@drawable/same_day"
+                android:text="@string/sameday_text_maps"
+                android:textSize="@dimen/text_size_small"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_zoom_in"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/zoom_in"
+        android:layout_marginBottom="@dimen/activity_margin_normal"
+        android:layout_marginStart="@dimen/activity_margin_normal"
+        app:layout_constraintBottom_toTopOf="@id/iv_zoom_out"/>
+
+    <ImageView
+        android:id="@+id/iv_zoom_out"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/zoom_out"
+        android:layout_marginBottom="@dimen/activity_margin_normal"
+        android:layout_marginStart="@dimen/activity_margin_normal"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom"/>
+
+    <ImageView
+        android:id="@+id/iv_current_loc"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/curuuntloc"
+        android:layout_marginBottom="@dimen/activity_margin_normal"
+        android:layout_marginEnd="@dimen/activity_margin_normal"
+        app:layout_constraintBottom_toTopOf="@id/ll_bottom"/>
+
+    <LinearLayout
+        android:id="@+id/ll_pick_up"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/activity_margin_normal"
+        android:background="@drawable/mapbottomrect"
+        android:padding="@dimen/text_margin_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/location"
+            android:textAllCaps="true"
+            android:fontFamily="@font/titillium_regular"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/text_size_mini"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_pickup_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:lines="2"
+            android:ellipsize="end"
+            android:hint="@string/getting_address"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:fontFamily="@font/titillium_regular"
+            android:textColor="@color/black_color"
+            android:textSize="@dimen/text_size_normal" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/iv_map_pin"
+        android:background="@drawable/picknew_btn">
+
+        <ProgressBar
+            android:id="@+id/pbHeaderProgress"
+            android:layout_width="20dp"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true">
+        </ProgressBar>
+
+        <TextView
+            android:id="@+id/tv_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_pick_location"
+            android:textSize="@dimen/text_size_mini"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/text_margin_mini"
+            android:textColor="@color/white_color"
+            android:fontFamily="@font/titillium_regular"
+            android:layout_toRightOf="@id/pbHeaderProgress"/>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/frd_ic"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            android:layout_toRightOf="@+id/tv_text" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_map_pin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/location_ic"/>
+</android.support.constraint.ConstraintLayout>
+</layout>

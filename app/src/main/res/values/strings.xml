@@ -1,0 +1,368 @@
+<resources>
+    <string name="app_name">TVC</string>
+    <!--Error-->
+    <string name="congratulation">Congratulations</string>
+    <string name="server_error">Can not connect to server! Please try again.</string>
+    <string name="network_error">No internet connection, please connect your phone to wifi or data connection.</string>
+    <string name="check_connection">Unable to make a connection with remote server. Either please check your internet connection or try after some time.</string>
+    <string name="notificationid_validation">We are not getting Device Notification Id. Either please check your internet connection or try again.</string>
+    <string name="url_missing">Whoops! Url is missing. Please check your internet connection then try again.</string>
+    <string name="unknown_success">Whoops! unknown success parameter.</string>
+    <string name="user_info_missing">Whoops! User info is missing. Please exit app then try again.</string>
+    <string name="email_client_error">There are no email clients installed.</string>
+    <string name="phone_error">Device does not support calling.</string>
+    <string name="please_wait">Please wait …</string>
+    <string name="appversion_validation">We are not getting Current Application Version. Please try again.</string>
+    <string name="deviceid_validation">We are not getting Device Unique Id. Please try again.</string>
+    <string name="support_error">Support information is not present.</string>
+    <string name="retry">Try Again</string>
+    <string name="reorder">Reorder</string>
+
+    <!--Camera-->
+    <string name="crop_action_error">Sorry! image is not cropped.</string>
+    <string name="gallery_pick_error">Sorry! image is not picked from gallery. Please try again.</string>
+    <string name="camera_capture_error">Sorry! image is not captured. Please try again.</string>
+    <string name="crop_action_support">Sorry! your device doesn\'t support cropping action.</string>
+
+    <string name="demo_text">Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making    it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney    College in Virginia, looked up one of the more obscure Latin words, consectetur,    from a Lorem Ipsum passage, and going through the cites of the word in classical</string>
+    <string name="ok">Ok</string>
+    <string name="getting_address">Getting Address...</string>
+
+    <!--Validation Message-->
+    <string name="please_enter_email">Please enter your email.</string>
+    <string name="please_enter_valid_email">Please enter valid email.</string>
+    <string name="please_enter_password">Please enter your password.</string>
+    <string name="please_enter_current_password">Please enter your current password.</string>
+    <string name="please_enter_new_password">Please enter your new password.</string>
+    <string name="please_confirm_password">Please confirm the password.</string>
+    <string name="please_enter_valid_password">Password should be between 6-20 characters.</string>
+    <string name="please_enter_confirm_password">Please enter your confirm password.</string>
+    <string name="please_enter_valid_confirm_password">Please enter valid confirm password.</string>
+    <string name="plz_accept_terms_">Please accept the terms and conditions.</string>
+    <string name="your_confirm_pass_doesnot">Your password and confirm password does not match.</string>
+    <string name="validation_title">Whoops!</string>
+
+    <!--Sign Up Next-->
+    <string name="please_enter_first_name">Please enter your name.</string>
+    <string name="please_enter_last_name">Please enter your last name.</string>
+    <string name="please_enter_mobile_number">Please enter contact number.</string>
+    <string name="please_enter_landline_number">Please enter landline number.</string>
+    <string name="please_enter_address">Please enter address.</string>
+    <string name="please_enter_valid_mobile_number">Mobile number is not valid.</string>
+    <string name="please_enter_county_code">Please enter country code.</string>
+    <string name="please_enter_valid_county_code">Please enter valid country code.</string>
+    <string name="Whoops">Whoops!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="please_select_drop_address">Please select drop-off address.</string>
+    <string name="please_select_pick_address">Please select pickup address.</string>
+    <string name="please_enter_item_desc">Please enter item description.</string>
+    <string name="please_enter_item_quantity">Please enter item quantity.</string>
+    <string name="please_select_deli_date">Please select delivery date.</string>
+    <string name="please_select_pickup_lifegate_date">Please select Life Gate.</string>
+    <string name="please_select_deli_time">Please select delivery time.</string>
+    <string name="please_select_pickup_date">Please select pickup date.</string>
+    <string name="please_select_pickup_time">Please select pickup time.</string>
+    <string name="please_enter_class_good">Please enter class of good.</string>
+    <string name="please_enter_type_good">Please enter type of good.</string>
+    <string name="please_enter_no_of_pallets">Please enter no of pallets.</string>
+    <string name="please_select_dropoff_lifegate_date">Please select Life Gate.</string>
+
+
+    <string name="please_enter_parcel_height">Please enter parcel height.</string>
+    <string name="please_enter_parcel_weight">Please enter parcel weight.</string>
+    <string name="please_enter_parcel_width">Please enter parcel width.</string>
+    <string name="please_enter_parcel_length">Please enter parcel length.</string>
+
+    <string name="please_enter_unit_no">Please enter unit number.</string>
+    <string name="please_enter_house_no">Please enter house number.</string>
+    <string name="please_enter_street_name">Please enter street name.</string>
+    <string name="please_enter_street_number">Please enter street number.</string>
+    <string name="please_enter_city_name">Please enter city.</string>
+    <string name="please_enter_state_name">Please enter state.</string>
+    <string name="please_enter_postcode">Please enter postcode.</string>
+    <string name="please_enter_country_name">Please enter country.</string>
+    <string name="please_select_vehicle">Please select vehicle.</string>
+    <string name="please_select_dob">Please select date of birth.</string>
+    <string name="please_select_gst">Please select GST.</string>
+    <string name="please_enter_gst_no">Please enter GST number.</string>
+    <string name="please_enter_vehicle_number">Please enter vehicle number.</string>
+    <string name="please_enter_vehicle_reg_number">Please enter vehicle registration number.</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="logout_text">Are you sure to logout from app?</string>
+    <string name="exit_text">Are you sure to exit from app?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_record">No Record</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="about">About</string>
+
+    <string name="choose_photo">Choose Photo</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec.</string>
+
+    <string name="home">Home</string>
+    <string name="delivery_status">Delivery Status</string>
+    <string name="delivery">Deliveries</string>
+    <string name="cur_delivery">Current deliveries</string>
+    <string name="near_by">Near By Deliveries</string>
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="setting">Setting</string>
+    <string name="notification">Notifications</string>
+    <string name="logout">Logout</string>
+    <string name="delivery_history">Delivery history</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="sign_in">Login</string>
+    <string name="sign_up">Signup</string>
+    <string name="thanks_text">Thank you for connecting with us \n Using Delivery App</string>
+
+    <string name="thanku_txt">Thank you for connecting with us</string>
+    <string name="using_txt">using Delivery App</string>
+    <string name="parchase_delevery_txt">Purchase delivery</string>
+    <string name="forgot_pass_txt">Forgot Password ?</string>
+    <string name="dont_account_txt">Don\'t have an account?</string>
+    <string name="sign_uphere_txt">Sign Up Here</string>
+    <string name="driver_reg_txt">Register as a Delivery Driver?</string>
+    <string name="click_here_txt">Click Here</string>
+    <string name="current_password">Current password</string>
+    <string name="reset_email">User Id</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="submit">Submit</string>
+    <string name="book">Book</string>
+
+    <string name="tekephoto_txt">Take a photo and get a signature</string>
+    <string name="get_proof">Get Proof of Delivery</string>
+    <string name="signature">Signature</string>
+    <string name="photo">Photo</string>
+    <string name="receiver_name">Receiver Name</string>
+    <string name="popup_title_txt">TVC Rates</string>
+    <string name="profileinfo_txt">Profile Info</string>
+    <string name="personalinfo_txt">Personal Info</string>
+    <string name="drofoffinfo_txt">Drop off Info</string>
+    <string name="picupaddress_txt">Pickup address</string>
+    <string name="picupdetail_txt">Pickup detail</string>
+    <string name="addressdetail_txt">Address Detail</string>
+    <string name="vehicledetail_txt">Vehicle Detail</string>
+    <string name="item_detail_txt">Item detail</string>
+    <string name="next_txt">NEXT</string>
+    <string name="nextbooking_txt">NEXT BOOKING</string>
+    <string name="signin_txt">SIGN IN</string>
+    <string name="login_txt">LOGIN</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="pickup_address">Pickup Address</string>
+    <string name="colon">:</string>
+    <string name="delivery_pri">Delivery Price</string>
+    <string name="delivery_distance">Delivery Distance</string>
+    <string name="delivery_date">Delivery Date</string>
+    <string name="at">At</string>
+    <string name="on">On</string>
+    <string name="remaining_time">Remaining Time</string>
+    <string name="time">Time</string>
+    <string name="distance">Distance</string>
+
+    <string name="report_txt">Report a Problem</string>
+    <string name="deliver_txt">Deliver</string>
+    <string name="route_txt">Route</string>
+    <string name="delivered_txt">Delivered</string>
+    <string name="paid">Paid</string>
+    <string name="accept_txt">Accept</string>
+    <string name="location">Location</string>
+
+    <string name="parcel_h_txt">Parcel height (cm)</string>
+    <string name="parcel_wid_txt">Parcel width (cm)</string>
+    <string name="parcel_l_txt">Parcel length (cm)</string>
+    <string name="parcel_w_txt">Parcel weight (kg)</string>
+
+    <string name="gst_txt">GST Number</string>
+    <string name="gst_registered">GST Registered</string>
+    <string name="abn_txt">ABN Number</string>
+    <string name="comapy_txt">Company Name</string>
+    <string name="firstname_txt">First Name</string>
+    <string name="lastname_txt">Last Name</string>
+    <string name="email_txt">Email</string>
+    <string name="name_txt">Name</string>
+    <string name="mob_no_txt">Mobile Number</string>
+    <string name="dropmob_no_txt">Drop off mobile number</string>
+    <string name="dropofadd_no_txt">Drop off address</string>
+    <string name="dropofdetail_no_txt">Drop off detail</string>
+    <string name="dropoflandno_txt">Drop of landline number</string>
+    <string name="landline_no_txt">Landline Number</string>
+    <string name="dob">Date of Birth</string>
+    <string name="password_txt">Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="con_pass_txt">Confirm Password</string>
+    <string name="unit_txt">Unit Number</string>
+    <string name="house_txt">House Number</string>
+    <string name="street_txt">Street Name</string>
+    <string name="street_suf_txt">Street Suffix</string>
+    <string name="subrub_txt">City</string>
+    <string name="state_txt">State</string>
+    <string name="postcode_txt">Postcode</string>
+    <string name="country_txt">Country</string>
+    <string name="pickup_txt">Pick up Address</string>
+    <string name="pickup">Pickup</string>
+    <string name="drop_off_txt">Dropoff Address</string>
+    <string name="vehicle_type_txt">Select Vehicle Type</string>
+    <string name="vehicle_no_txt">Vehicle Number</string>
+    <string name="vehicle_reg_no_txt">Vehicle registration number</string>
+    <string name="submit_txt">Submit</string>
+    <string name="register_txt">Register</string>
+    <string name="review_txt">Review</string>
+    <string name="cancel_txt">Cancel</string>
+    <string name="special_ins_txt">Special Instructions...</string>
+    <string name="item_des_txt">Item Description</string>
+    <string name="item_qua_txt">Item Quantity</string>
+    <string name="delivery_date_qua_txt">Delivery Date</string>
+    <string name="delivery_time">Delivery Time</string>
+    <string name="pickup_date_qua_txt">Pickup Date</string>
+    <string name="pickup_time">Pickup Time</string>
+    <string name="delivery_order">Delivery Order</string>
+    <string name="street_number">Street number</string>
+
+    <string name="reschedule">Reschedule</string>
+    <string name="cancel">Cancel</string>
+    <string name="cancelled">Cancelled</string>
+
+    <string name="pickupinfo_d_txt">Pickup Info</string>
+    <string name="dropoff_d_txt">Drop off address</string>
+    <string name="parcel_d_txt">Parcel Detail</string>
+    <string name="deleveryChar_d_txt">Delivery Charges</string>
+    <string name="deleveryd_d_txt">Delivery Detail</string>
+
+    <string name="name_d_txt">Name -</string>
+    <string name="companyname_d_txt">Company Name -</string>
+    <string name="mobile_d_txt">Mobile Number -</string>
+    <string name="landline_d_txt">Landline Number -</string>
+    <string name="houseno_d_txt">House Number -</string>
+    <string name="street_d_txt">Street Name -</string>
+    <string name="street_suff_d_txt">Street Suffix -</string>
+    <string name="state_d_txt">State -</string>
+    <string name="country_d_txt">Country -</string>
+    <string name="postcode_d_txt">Postcode -</string>
+    <string name="comments_txt">Comment...</string>
+    <string name="phone_txt">Phone</string>
+
+    <string name="title_activity_maps">Map</string>
+    <string name="pickup_maps">Pickup Location</string>
+    <string name="dropoff_maps">Dropoff Location</string>
+    <string name="bottom_text_maps">What type of delivery you are booking?</string>
+    <string name="delivery_type">Chose your delivery type?</string>
+    <string name="twohours_text_maps">2 Hours</string>
+    <string name="fourhours_text_maps">4 Hours</string>
+    <string name="sameday_text_maps">Same day</string>
+    <string name="set_pick_location">Set Pickup Location</string>
+    <string name="due_in">DUE IN</string>
+
+    <string name="vehicle_type">Vehicle Type</string>
+    <string name="car">Car</string>
+    <string name="bike">Bike</string>
+    <string name="van">Van</string>
+    <string name="truck">Truck</string>
+
+    <string name="feet">feet</string>
+    <string name="cm">cm</string>
+
+    <string name="select_problem">Select Problem</string>
+    <string name="damage_problem">Due to vehicle damage</string>
+    <string name="rain_problem">Due to heavy rain</string>
+    <string name="sick_problem">Due to sick</string>
+    <string name="custom">Custom</string>
+
+
+    <string name="please_give_comment">Please give comment.</string>
+    <string name="please_give_rate">Please give rate to driver.</string>
+    <string name="please_select_reason">Please select reason.</string>
+    <string name="please_give_custome_reason">Please give custom reason.</string>
+
+    <string name="are_you_cancel">Are you sure want to cancel delivery?</string>
+    <string name="are_you_accept">Do you want to accept this delivery?</string>
+
+    <string name="pickup_loc_txt">Pickup Location</string>
+    <string name="pickup_contact_name">Pickup contact name</string>
+    <string name="delivery_loc_txt">Delivery Location</string>
+    <string name="delivery_id_txt">Delivery ID</string>
+    <string name="delivery_datein_txt">Delivery Date</string>
+    <string name="delivery_contact_name_txt">Delivery contact name</string>
+    <string name="delivery_contact_no_txt">Delivery contact no.</string>
+    <string name="driver_name">Driver Name</string>
+    <string name="delivery_price">Delivery Price</string>
+    <string name="driver_number">Driver Number</string>
+    <string name="amonunt_txt">Amount</string>
+    <string name="time_duration_txt">2 h 00m</string>
+    <string name="price">Price</string>
+    <string name="us_dollar">\u0024</string>
+    <string name="km">KM</string>
+
+    <string name="permission_rationale">Location permission is needed for core functionality</string>
+    <string name="permission_denied_explanation">Permission was denied, but is needed for core
+        functionality.</string>
+    <string name="settings">Settings</string>
+
+    <string name="request_updates">Request updates</string>
+    <string name="remove_updates">Remove updates</string>
+    <string name="unknown_location">Unknown location</string>
+
+    <string name="batched_location_updates">Batched location updates</string>
+
+    <plurals name="num_locations_reported">
+        <item quantity="zero">No location reported</item>
+        <item quantity="one">One location reported</item>
+        <item quantity="other">%d locations reported</item>
+    </plurals>
+
+    <string name="default_channel">Default channel</string>
+    <string name="permission_required">TVC requires this permission to launch...</string>
+    <string name="hint_sign">Get Signature</string>
+    <string name="dialog_title">SIGN HERE</string>
+    <string name="hint_cancel">Cancel</string>
+    <string name="hint_clear">Clear</string>
+    <string name="hint_save">Save</string>
+    <string name="please_enter_name_client">Please enter client name.</string>
+    <string name="please_take_signature_client">Please take signature of client.</string>
+    <string name="please_take_image_client">Please take image of delivery items.</string>
+    <string name="driver_id">Driver Id</string>
+
+    <string name="not_available">This delivery option is not available at this time.</string>
+
+    <string name="google_maps_key">AIzaSyC7NOJ5VbOZ2uzheASfYPZVPMniO0QAcys</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="pickup_contact_detail_txt">Pickup Contact Detail</string>
+    <string name="goods_detail_txt">Goods detail</string>
+    <string name="class_of_goods">Class of Goods</string>
+    <string name="type_of_goods">Type of Goods</string>
+    <string name="inside_pick">Inside Pickup</string>
+    <string name="lift_gate">Lift gate</string>
+    <string name="number_of_pallets">Number of Pallets</string>
+    <string name="total_weight_of_the_package">Total weight of the Package</string>.
+    <string name="good_width">Width</string>
+    <string name="good_height">Height</string>
+    <string name="good_length">Length</string>
+    <string name="good_measurement_type">Measurement Type</string>
+    <string name="drop_contact_detail_txt">Drop Contact Detail</string>
+    <string name="select_vehicle_txt">Select Vehicle</string>
+
+
+    <string name="single_delivery">Single</string>
+    <string name="multiple_delivery">Multiple</string>
+    <string name="express_delivery">Express</string>
+
+</resources>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/splash_bg">
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.30" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/email"
+            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/loginlogo" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.40" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/activity_margin_medium" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/activity_margin_medium" />
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_margin_normal"
+            android:inputType="textEmailAddress"
+            android:hint="@string/email"
+            android:autofillHints="@string/email"
+            style="@style/edit_text_login_style"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/guideline6"
+            android:imeOptions="actionNext"/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_margin_medium"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:autofillHints="@string/password"
+            style="@style/edit_text_login_style"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/et_email"
+            android:imeOptions="actionDone"/>
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_small"
+            android:paddingTop="@dimen/activity_margin_normal"
+            android:paddingLeft="@dimen/activity_margin_normal_"
+            android:text="@string/forgot_password"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_extra_normal"
+            android:fontFamily="@font/titillium_regular"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_in"
+            android:minHeight="0dp"
+            android:textStyle="bold"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/yellow"
+            android:layout_marginTop="@dimen/activity_margin_medium"
+            android:fontFamily="@font/titillium_regular"
+            android:textSize="@dimen/text_size_extra_normal"
+            android:paddingTop="@dimen/text_padding"
+            android:paddingBottom="@dimen/text_padding"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/tv_forgot_password" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_sign_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/activity_margin_large"
+            app:layout_constraintEnd_toStartOf="@+id/guideline8"
+            app:layout_constraintStart_toStartOf="@+id/guideline7"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/titillium_regular"
+                android:text="@string/dont_account_txt"
+                android:textSize="@dimen/text_size_extra_normal"
+                android:textColor="@color/black_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:textSize="@dimen/text_size_extra_normal"
+                android:fontFamily="@font/titillium_regular"
+                android:text="@string/sign_uphere_txt"
+                android:textStyle="bold"
+                android:textColor="@color/white_color" />
+        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ll_sign_up_driver"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:padding="@dimen/activity_margin_normal"-->
+<!--            android:background="@drawable/signupdriver"-->
+<!--            android:layout_marginTop="@dimen/activity_margin_large"-->
+<!--            app:layout_constraintEnd_toStartOf="@+id/guideline8"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/guideline7"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/ll_sign_up" >-->
+
+<!--            <TextView-->
+<!--                -->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:fontFamily="@font/titillium_regular"-->
+<!--                android:text="@string/driver_reg_txt"-->
+<!--                android:textSize="@dimen/text_size_extra_normal"-->
+<!--                android:textColor="@color/black_color" />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/text_margin_small"-->
+<!--                android:textSize="@dimen/text_size_extra_normal"-->
+<!--                android:fontFamily="@font/titillium_regular"-->
+<!--                android:text="@string/click_here_txt"-->
+<!--                android:drawableRight="@drawable/arrow"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="@color/white_color" />-->
+<!--        </LinearLayout>-->
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

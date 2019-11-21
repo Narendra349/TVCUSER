@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_profile_rect"
+    android:layout_marginBottom="@dimen/activity_margin_normal"
+    android:layout_marginStart="@dimen/activity_margin_normal"
+    android:layout_marginEnd="@dimen/activity_margin_normal">
+
+    <View
+        android:id="@+id/view_hours"
+        android:layout_width="@dimen/text_margin_mini_"
+        android:layout_height="0dp"
+        android:background="@color/black_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_margin_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    <com.pickanddrop.utils.ImageViewCircular
+        android:id="@+id/iv_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="@dimen/text_margin_small"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user_ic" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:theme="@style/RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:visibility="gone"
+            style="?android:attr/ratingBarStyleSmall"
+            app:layout_constraintEnd_toStartOf="@id/barrier"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"
+            app:layout_constraintStart_toStartOf="parent"
+            android:stepSize="0.5" />
+
+    <android.support.constraint.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="iv_profile" />
+
+    <TextView
+        android:id="@+id/tv_delivery_id"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/delivery_id_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_delivery_date"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/delivery_datein_txt"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_pickup_location"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:maxLines="3"
+        android:text="@string/pickup_loc_txt"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_delivery_location"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:maxLines="3"
+        android:text="@string/delivery_loc_txt"
+        app:layout_constraintTop_toBottomOf="@id/tv_pickup_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_delivery_contact_name"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/delivery_contact_name_txt"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_delivery_contact_no"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/delivery_contact_no_txt"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_contact_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_driver_name"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/driver_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_delivery_contact_no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_driver_no"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/black_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/driver_number"
+        app:layout_constraintTop_toBottomOf="@id/tv_driver_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini"
+        android:ellipsize="end"/>
+
+    <TextView
+        android:id="@+id/tv_price_text"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="0dp"
+        android:text="@string/price"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:layout_marginEnd="@dimen/text_margin_small"
+        app:layout_constraintEnd_toStartOf="@id/iv_vehicle"
+        app:layout_constraintTop_toBottomOf="@id/tv_driver_no"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_marginStart="@dimen/text_margin_small"
+        android:fontFamily="@font/titillium_regular"
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/text_size_normal"
+        android:layout_width="wrap_content"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        tools:text="100 $"
+        app:layout_constraintTop_toBottomOf="@id/tv_price_text"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_margin_mini" />
+
+    <ImageView
+        android:id="@+id/iv_vehicle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/bike_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_driver_no"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

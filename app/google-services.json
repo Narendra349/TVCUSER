@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "133054248981",
+    "firebase_url": "https://pikndrop-ea689.firebaseio.com",
+    "project_id": "pikndrop-ea689",
+    "storage_bucket": "pikndrop-ea689.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133054248981:android:5e89f658cd5b4a005a761c",
+        "android_client_info": {
+          "package_name": "com.tvc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133054248981-4pl162001b7ve09ilh80irk4h868ghct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tvc",
+            "certificate_hash": "6846b2a91abaf7dbb9b7d4faa00f995899b84b58"
+          }
+        },
+        {
+          "client_id": "133054248981-34mfnsr7r4aj03apmjumn4gm99us86ib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHEkGfdPp6rSbnXeHqYqh9peZqwyejEwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133054248981-34mfnsr7r4aj03apmjumn4gm99us86ib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

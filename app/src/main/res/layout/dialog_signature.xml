@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="500dp"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/activity_margin_large"
+    android:background="@android:color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/dialog_title"
+        android:textColor="@android:color/white"
+        android:padding="5dp"
+        android:visibility="gone"
+        android:textSize="@dimen/text_size_extra_normal"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:layout_marginTop="@dimen/activity_margin_normal"
+        android:background="@android:color/white">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hint_cancel"
+            tools:ignore="ButtonStyle"
+            android:minHeight="0dp"
+            android:padding="@dimen/text_padding"
+            android:fontFamily="@font/titillium_regular"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/yellow"
+            android:background="@drawable/button_shape" />
+
+        <Button
+            android:id="@+id/clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hint_clear"
+            tools:ignore="ButtonStyle"
+            android:layout_marginLeft="@dimen/activity_margin_normal"
+            android:minHeight="0dp"
+            android:padding="@dimen/text_padding"
+            android:fontFamily="@font/titillium_regular"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/yellow"
+            android:background="@drawable/button_shape" />
+
+        <Button
+            android:id="@+id/getsign"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/hint_save"
+            android:layout_marginLeft="@dimen/activity_margin_normal"
+            tools:ignore="ButtonStyle"
+            android:minHeight="0dp"
+            android:padding="@dimen/text_padding"
+            android:fontFamily="@font/titillium_regular"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/yellow"
+            android:background="@drawable/button_shape" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical" />
+
+</LinearLayout>
