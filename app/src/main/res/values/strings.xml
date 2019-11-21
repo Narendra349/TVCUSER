@@ -17,6 +17,7 @@
     <string name="support_error">Support information is not present.</string>
     <string name="retry">Try Again</string>
     <string name="reorder">Reorder</string>
+    <string name="distance_error">Distance should be 30km from Pick up address and Drop off address</string>
 
     <!--Camera-->
     <string name="crop_action_error">Sorry! image is not cropped.</string>

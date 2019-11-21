@@ -55,7 +55,7 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        deliveryBookExpressDeliveryBinding = DataBindingUtil.inflate(inflater, R.layout.delivery_book, container, false);
+        deliveryBookExpressDeliveryBinding = DataBindingUtil.inflate(inflater, R.layout.delivery_book_express_delivery, container, false);
         return deliveryBookExpressDeliveryBinding.getRoot();
     }
 

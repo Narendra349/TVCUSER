@@ -66,6 +66,11 @@ public class OtherDTO {
         @SerializedName("admin_percentage")
         @Expose
         private String driverPercentage;
+        private String ifPalletOne;
+        private String ifPalletTwo;
+        private String ifPalletMore;
+        private String MaxDistance;
+        private String ExpressPrice;
 
         public String getMotorbike() {
             return motorbike;
@@ -103,8 +108,50 @@ public class OtherDTO {
             return driverPercentage;
         }
 
+        public String getIfPalletOne() {
+            return ifPalletOne;
+        }
+
+        public void setIfPalletOne(String ifPalletOne) {
+            this.ifPalletOne = ifPalletOne;
+        }
+
+        public String getIfPalletTwo() {
+            return ifPalletTwo;
+        }
+
+        public void setIfPalletTwo(String ifPalletTwo) {
+            this.ifPalletTwo = ifPalletTwo;
+        }
+
+        public String getIfPalletMore() {
+            return ifPalletMore;
+        }
+
+        public void setIfPalletMore(String ifPalletMore) {
+            this.ifPalletMore = ifPalletMore;
+        }
+
+        public String getMaxDistance() {
+            return MaxDistance;
+        }
+
+        public void setMaxDistance(String maxDistance) {
+            MaxDistance = maxDistance;
+        }
+
+        public String getExpressPrice() {
+            return ExpressPrice;
+        }
+
+        public void setExpressPrice(String expressPrice) {
+            ExpressPrice = expressPrice;
+        }
+
         public void setDriverPercentage(String driverPercentage) {
             this.driverPercentage = driverPercentage;
+
+
         }
     }
 }
