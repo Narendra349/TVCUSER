@@ -139,6 +139,16 @@
                         android:fontFamily="@font/titillium_regular"/>
 
                     <TextView
+                        android:id="@+id/tv_parcel_pallets"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:text="@string/drofoffinfo_txt"
+                        android:textColor="@color/white_color"
+                        android:layout_marginTop="@dimen/text_margin_small"
+                        android:fontFamily="@font/titillium_regular"/>
+
+                    <TextView
                         android:id="@+id/tv_parcel_height"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -222,28 +232,28 @@
                         android:layout_marginTop="@dimen/text_margin_small"
                         android:fontFamily="@font/titillium_regular"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="@dimen/text_size_normal"
-                        android:text="@string/item_des_txt"
-                        android:textStyle="bold"
-                        android:textAllCaps="true"
-                        android:textColor="@color/black_color"
-                        android:layout_marginTop="@dimen/activity_margin_normal"
-                        android:fontFamily="@font/titillium_regular"/>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textSize="@dimen/text_size_normal"-->
+<!--                        android:text="@string/item_des_txt"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:textAllCaps="true"-->
+<!--                        android:textColor="@color/black_color"-->
+<!--                        android:layout_marginTop="@dimen/activity_margin_normal"-->
+<!--                        android:fontFamily="@font/titillium_regular"/>-->
 
-                    <TextView
-                        android:id="@+id/tv_item_desc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_normal"
-                        tools:text="@string/drofoffinfo_txt"
-                        android:textColor="@color/white_color"
-                        android:layout_marginBottom="@dimen/activity_margin_normal_"
-                        android:layout_marginTop="@dimen/text_margin_small"
-                        android:fontFamily="@font/titillium_regular"/>
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_item_desc"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:textSize="@dimen/text_size_normal"-->
+<!--                        tools:text="@string/drofoffinfo_txt"-->
+<!--                        android:textColor="@color/white_color"-->
+<!--                        android:layout_marginBottom="@dimen/activity_margin_normal_"-->
+<!--                        android:layout_marginTop="@dimen/text_margin_small"-->
+<!--                        android:fontFamily="@font/titillium_regular"/>-->
 
                 </LinearLayout>
 

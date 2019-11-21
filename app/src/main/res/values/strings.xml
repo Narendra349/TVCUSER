@@ -184,6 +184,7 @@
     <string name="accept_txt">Accept</string>
     <string name="location">Location</string>
 
+    <string name="parcel_p_txt">No of Pallets </string>
     <string name="parcel_h_txt">Parcel height (cm)</string>
     <string name="parcel_wid_txt">Parcel width (cm)</string>
     <string name="parcel_l_txt">Parcel length (cm)</string>

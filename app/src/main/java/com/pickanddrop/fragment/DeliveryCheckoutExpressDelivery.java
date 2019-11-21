@@ -174,14 +174,12 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             map.put("delivery_type", deliveryDTO.getDeliveryType());
             map.put("driver_delivery_cost", deliveryDTO.getDriverDeliveryCost());
             map.put("delivery_distance", deliveryDTO.getDeliveryDistance());
-
             try {
                 map.put("delivery_cost", String.format("%.2f", Double.parseDouble(deliveryDTO.getDeliveryCost())));
             } catch (Exception e) {
                 map.put("delivery_cost", deliveryDTO.getDeliveryCost());
                 e.printStackTrace();
             }
-
             map.put("dropoff_comapny_name", deliveryDTO.getDropoffComapnyName());
             map.put("vehicle_type", deliveryDTO.getVehicleType());
             map.put("pickUpLat", deliveryDTO.getPickupLat());
@@ -190,10 +188,8 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             map.put("dropOffLat", deliveryDTO.getDropoffLat());
             map.put("delivery_time", deliveryDTO.getDeliveryTime());
             map.put(PN_APP_TOKEN, APP_TOKEN);
-
             map.put("dropoff_country_code", deliveryDTO.getDropoffCountryCode());
             map.put("pickup_country_code", deliveryDTO.getPickupCountryCode());
-
             APIInterface apiInterface = APIClient.getClient();
             Call<OtherDTO> call = apiInterface.callCreateOrderApi(map);
             call.enqueue(new Callback<OtherDTO>() {

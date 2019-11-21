@@ -146,12 +146,12 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                         }
                     }
                 } else {
-                    CreateOrderOne createOrderOne = new CreateOrderOne();
+                    CreateOrderExpressDelivery createOrderExpressDelivery = new CreateOrderExpressDelivery();
                     Bundle bundle = new Bundle();
                     if (data != null) {
                         bundle.putParcelable("deliveryDTO", data);
-                        createOrderOne.setArguments(bundle);
-                        addFragmentWithoutRemove(R.id.container_main, createOrderOne, "CreateOrderOne");
+                        createOrderExpressDelivery.setArguments(bundle);
+                        addFragmentWithoutRemove(R.id.container_main, createOrderExpressDelivery, "CreateOrderExpressDelivery");
                     }
                 }
                 break;
@@ -202,13 +202,14 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                                 deliveryDetailsBinding.tvDropMobile.setText(getString(R.string.mob_no_txt) + " - " + data.getDropoffMobNumber());
                                 deliveryDetailsBinding.tvDropAddress.setText(getString(R.string.drop_off_txt) + " - " + data.getDropoffaddress());
 
+                                deliveryDetailsBinding.tvParcelPallets.setText(getString(R.string.parcel_p_txt) + " - " + data.getNoOfPallets());
                                 deliveryDetailsBinding.tvParcelHeight.setText(getString(R.string.parcel_h_txt) + " - " + data.getParcelHeight());
                                 deliveryDetailsBinding.tvParcelWidth.setText(getString(R.string.parcel_wid_txt) + " - " + data.getParcelWidth());
                                 deliveryDetailsBinding.tvParcelLenght.setText(getString(R.string.parcel_l_txt) + " - " + data.getParcelLenght());
                                 deliveryDetailsBinding.tvParcelWeight.setText(getString(R.string.parcel_w_txt) + " - " + data.getParcelWeight());
 
                                 deliveryDetailsBinding.tvRemainingTime.setText(getString(R.string.due_in) + " - " + data.getDeliveryTimeDuration());
-                                deliveryDetailsBinding.tvItemDesc.setText(getString(R.string.item_des_txt) + " - " + data.getItemDescription());
+//                                deliveryDetailsBinding.tvItemDesc.setText(getString(R.string.item_des_txt) + " - " + data.getItemDescription());
 
 
                                 if (appSession.getUserType().equals(DRIVER)) {

@@ -110,6 +110,11 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
         createOrderExpressDeliveryDropBinding.etLastName.setText(deliveryDTO.getDropoffLastName());
         createOrderExpressDeliveryDropBinding.etMobile.setText(deliveryDTO.getDropoffMobNumber());
         createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(deliveryDTO.getDropoffaddress());
+        if(deliveryDTO.getDropoffLiftGate().equals("insidePickup")){
+            createOrderExpressDeliveryDropBinding.rbInsidePickup.setChecked(true);
+        }else if(deliveryDTO.getDropoffLiftGate().equals("liftGate")){
+            createOrderExpressDeliveryDropBinding.rbLiftGate.setChecked(true);
+        }
 
 
         createOrderExpressDeliveryDropBinding.ccp.setCountryForPhoneCode(Integer.parseInt(deliveryDTO.getDropoffCountryCode()));

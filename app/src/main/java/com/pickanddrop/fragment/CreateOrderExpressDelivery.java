@@ -104,6 +104,23 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
         createOrderExpressDeliveryBinding.etPickupAddress.setText(data.getPickupaddress());
         createOrderExpressDeliveryBinding.etPickSpecialInst.setText(data.getPickupSpecialInst());
 
+//                pickupLiftGate = createOrderExpressDeliveryBinding.etPickSpecialInst.getText().toString();
+        createOrderExpressDeliveryBinding.etPickupDate.setText(data.getPickupDate());
+        createOrderExpressDeliveryBinding.etPickupTime.setText(data.getPickupTime());
+        createOrderExpressDeliveryBinding.etGoodClass.setText(data.getClassGoods());
+        createOrderExpressDeliveryBinding.etGoodType.setText(data.getTypeGoods());
+        createOrderExpressDeliveryBinding.etPalletsCount.setText(data.getNoOfPallets());
+        createOrderExpressDeliveryBinding.etGoodWidth.setText(data.getProductWidth());
+        createOrderExpressDeliveryBinding.etGoodHight.setText(data.getProductHeight());
+        createOrderExpressDeliveryBinding.etGoodLength.setText(data.getProductLength());
+        createOrderExpressDeliveryBinding.etPalletsTotalWeight.setText(data.getProductWeight());
+        if(data.getPickupLiftGate().equals("insidePickup")){
+            createOrderExpressDeliveryBinding.rbInsidePickup.setChecked(true);
+        }else if(data.getPickupLiftGate().equals("liftGate")){
+            createOrderExpressDeliveryBinding.rbLiftGate.setChecked(true);
+        }
+
+
         createOrderExpressDeliveryBinding.ccp.setCountryForPhoneCode(Integer.parseInt(data.getPickupCountryCode()));
 
         deliveryType = data.getDeliveryType();
@@ -126,6 +143,7 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
         createOrderExpressDeliveryBinding.btnNext.setOnClickListener(this);
         createOrderExpressDeliveryBinding.etPickupDate.setOnClickListener(this);
         createOrderExpressDeliveryBinding.etPickupTime.setOnClickListener(this);
+
 
         HashMap<String, String> hashMap1 = new HashMap<>();
         hashMap1.put(PN_NAME, "");
