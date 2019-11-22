@@ -124,7 +124,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             if (isAppOpen) {
 
                 Map<String, String> data = remoteMessage.getData();
-                if(appSession.isLogin()){
+                if(appSession.isLoginUser()){
 
 
                     Intent intent = new Intent(getBaseContext(), NotificationDialog.class);
@@ -231,7 +231,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             mp.setLooping(false);
             mp.start();
 
-            if(appSession.isLogin()){
+            if(appSession.isLoginUser()){
                 intent = new Intent(getApplicationContext(), DrawerContentSlideActivity.class);
                 intent.putExtras(bundle);
 //                startActivity(intent);

@@ -12,7 +12,6 @@ import java.lang.reflect.Type;
 
 public class AppSession {
 
-
     //Declaration of variables
     private static final String SESSION_NAME = "com.tvc.utils";
     private static final String APP_DEFAULT_LANGUAGE = "en";

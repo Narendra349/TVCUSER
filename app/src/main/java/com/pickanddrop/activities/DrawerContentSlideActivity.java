@@ -569,7 +569,7 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
                     if (response.isSuccessful()) {
                         try {
                             if (response.body().getResult().equalsIgnoreCase("success")) {
-                                appSession.setLogin(false);
+                                appSession.setLoginUser(false);
                                 appSession.setUser(null);
                                 Intent intent = new Intent(DrawerContentSlideActivity.this, SplashActivity.class);
                                 startActivity(intent);

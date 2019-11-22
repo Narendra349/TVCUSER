@@ -147,7 +147,7 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
                         try {
                             if (response.body().getResult().equalsIgnoreCase("success")) {
                                 appSession.setUser(response.body());
-                                appSession.setLogin(true);
+                                appSession.setLoginUser(true);
 
                                 appSession.setUserType(appSession.getUser().getData().getUserType());
                                 startActivity(new Intent(context, DrawerContentSlideActivity.class));

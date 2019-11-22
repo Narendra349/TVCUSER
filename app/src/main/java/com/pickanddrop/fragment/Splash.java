@@ -52,7 +52,7 @@ public class Splash extends BaseFragment {
             @Override
             public void run() {
 
-                if (appSession.isLogin()){
+                if (appSession.isLoginUser()){
                     startActivity(new Intent(context, DrawerContentSlideActivity.class));
                     getActivity().finish();
                 }else {
