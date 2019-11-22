@@ -68,6 +68,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         super.onNewToken(s);
 
         Log.e(TAG, "New Token >>>>>>>>"+ s);
+
         // Update refreshed Token
         new AppSession(getApplicationContext()).setFCMToken(s);
     }
