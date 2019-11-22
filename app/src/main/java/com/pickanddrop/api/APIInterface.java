@@ -4,6 +4,7 @@ import com.pickanddrop.dto.DeliveryDTO;
 import com.pickanddrop.dto.LocationDTO;
 import com.pickanddrop.dto.LoginDTO;
 import com.pickanddrop.dto.OtherDTO;
+import com.pickanddrop.dto.PriceDistanceDTO;
 import com.pickanddrop.model.ChangePasswordModel;
 import com.pickanddrop.model.ForgotPasswordModel;
 import com.pickanddrop.model.LoginModel;
@@ -131,7 +132,11 @@ public interface APIInterface {
 
     @FormUrlEncoded
     @POST("getSettings")
-    Call<OtherDTO> getSettingForPrice(@FieldMap Map<String, String> map);
+    Call<OtherDTO> getSettingForPrice1(@FieldMap Map<String, String> map);
+
+    @FormUrlEncoded
+    @POST("getPriceDetails")
+    Call<PriceDistanceDTO> getSettingForPrice(@FieldMap Map<String, String> map);
 
     @FormUrlEncoded
     @POST("reportProblem")

@@ -30,6 +30,7 @@ import com.pickanddrop.api.APIInterface;
 import com.pickanddrop.databinding.CreateOrderExpressDeliveryDropBinding;
 import com.pickanddrop.dto.DeliveryDTO;
 import com.pickanddrop.dto.OtherDTO;
+import com.pickanddrop.dto.PriceDistanceDTO;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.CustomSpinnerForAll;
@@ -64,7 +65,8 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
     private ArrayList<HashMap<String, String>> vehicleList;
     private boolean rescheduleStatus = false;
     private String TAG = CreateOrderSecond.class.getName();
-    private OtherDTO otherDTO;
+//    private OtherDTO otherDTO;
+    private PriceDistanceDTO priceDistanceDTO;
     private Double totalDeliveryCost = 0.0, driverDeliveryCost = 0.0;
 
     @Override
@@ -149,16 +151,16 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
             map.put("code", APP_TOKEN);
 
             APIInterface apiInterface = APIClient.getClient();
-            Call<OtherDTO> call = apiInterface.getSettingForPrice(map);
-            call.enqueue(new Callback<OtherDTO>() {
+            Call<PriceDistanceDTO> call = apiInterface.getSettingForPrice(map);
+            call.enqueue(new Callback<PriceDistanceDTO>() {
                 @Override
-                public void onResponse(Call<OtherDTO> call, Response<OtherDTO> response) {
+                public void onResponse(Call<PriceDistanceDTO> call, Response<PriceDistanceDTO> response) {
                     if (mProgressDialog != null && mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
                     if (response.isSuccessful()) {
                         try {
                             if (response.body().getResult().equalsIgnoreCase("success")) {
-                                otherDTO = response.body();
+                                priceDistanceDTO = response.body();
                             } else {
                                 utilities.dialogOK(context, "", response.body().getMessage(), getString(R.string.ok), false);
                             }
@@ -169,7 +171,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                 }
 
                 @Override
-                public void onFailure(Call<OtherDTO> call, Throwable t) {
+                public void onFailure(Call<PriceDistanceDTO> call, Throwable t) {
                     if (mProgressDialog != null && mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
                     utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
@@ -186,7 +188,9 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
     private void initView() {
 //        createOrderExpressDeliveryDropBinding.ccp.registerPhoneNumberTextView(createOrderExpressDeliveryDropBinding.etMobile);
 
-        otherDTO = new OtherDTO();
+//        otherDTO = new OtherDTO();
+        priceDistanceDTO = new PriceDistanceDTO();
+
         vehicleList = new ArrayList<>();
         createOrderExpressDeliveryDropBinding.btnSubmit.setOnClickListener(this);
         createOrderExpressDeliveryDropBinding.ivBack.setOnClickListener(this);
@@ -278,20 +282,37 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                         float distanceInkms = (loc1.distanceTo(loc2)) / 1000;
 
                         int parcelCount = Integer.parseInt(deliveryDTO.getNoOfPallets());
-//                        if(parcelCount == 1){
-//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletOne());
-//                        }else if(parcelCount == 2){
-//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletTwo());
-//                        }else if(parcelCount >= 3){
-//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletMore());
-//                        }
+
                         if(parcelCount == 1){
-                            totalDeliveryCost =  parcelCount * Double.parseDouble("250");
+                            for(int i=0;priceDistanceDTO.getVehicle().getPallets().size()>i;i++){
+                                if(priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("1")){
+                                    totalDeliveryCost =  parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice());
+                                }
+                            }
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletOne());
                         }else if(parcelCount == 2){
-                            totalDeliveryCost =  parcelCount * Double.parseDouble("225");
+                            for(int i=0;priceDistanceDTO.getVehicle().getPallets().size()>i;i++){
+                                if(priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("2")){
+                                    totalDeliveryCost =  parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice());
+                                }
+                            }
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletTwo());
                         }else if(parcelCount >= 3){
-                            totalDeliveryCost =  parcelCount * Double.parseDouble("200");
+                            for(int i=0;priceDistanceDTO.getVehicle().getPallets().size()>i;i++){
+                                if(priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("3")){
+                                    totalDeliveryCost =  parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice());
+                                }
+                            }
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletMore());
                         }
+
+//                        if(parcelCount == 1){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble("250");
+//                        }else if(parcelCount == 2){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble("225");
+//                        }else if(parcelCount >= 3){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble("200");
+//                        }
 
 //                        if (vehicleType.equalsIgnoreCase(getString(R.string.bike))) {
 //                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getMotorbike());
@@ -303,8 +324,8 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 //                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getTruck());
 //                        }
 
-//                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat(otherDTO.getVehicle().getExpressPrice()));
-                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat("25"));
+                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat(priceDistanceDTO.getVehicle().getPrice()));
+//                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat("25"));
 
 //                        driverDeliveryCost = totalDeliveryCost - ((totalDeliveryCost * Float.parseFloat(otherDTO.getVehicle().getDriverPercentage()) / 100));
 
@@ -382,14 +403,18 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 
             float distanceInkms = (loc1.distanceTo(loc2)) / 1000;
             System.out.println("distanceInkms-->"+ distanceInkms);
-//            if(distanceInkms <= (Float.parseFloat(otherDTO.getVehicle().getMaxDistance())))
-            if(distanceInkms <= 30)
-            createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
+            if(distanceInkms <= (Float.parseFloat(priceDistanceDTO.getVehicle().getMax_km())))
+//            if(distanceInkms <= 30)
+                if(distanceInkms >= (Float.parseFloat(priceDistanceDTO.getVehicle().getMin_km())))
+                  createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
             else {
                 createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
                 utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error), context.getResources().getString(R.string.ok), false);
             }
-
+            else {
+                createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
+                utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error), context.getResources().getString(R.string.ok), false);
+            }
         }
     }
 

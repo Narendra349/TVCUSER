@@ -146,7 +146,7 @@ public class CreateOrderSecond extends BaseFragment implements AppConstants, Vie
             map.put("code", APP_TOKEN);
 
             APIInterface apiInterface = APIClient.getClient();
-            Call<OtherDTO> call = apiInterface.getSettingForPrice(map);
+            Call<OtherDTO> call = apiInterface.getSettingForPrice1(map);
             call.enqueue(new Callback<OtherDTO>() {
                 @Override
                 public void onResponse(Call<OtherDTO> call, Response<OtherDTO> response) {
