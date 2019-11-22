@@ -234,6 +234,7 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
                     deliveryDTO.setPickupCountryCode(countryCode);
 
                     bundle.putParcelable("deliveryDTO", deliveryDTO);
+                    bundle.putString("delivery_type",deliveryType);
                     createOrderExpressDeliveryDrop.setArguments(bundle);
                     addFragmentWithoutRemove(R.id.container_main, createOrderExpressDeliveryDrop, "CreateOrderExpressDeliveryDrop");
                 }

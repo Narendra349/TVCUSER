@@ -17,7 +17,8 @@
     <string name="support_error">Support information is not present.</string>
     <string name="retry">Try Again</string>
     <string name="reorder">Reorder</string>
-    <string name="distance_error">Distance should be 30km from Pick up address and Drop off address</string>
+    <string name="distance_error_express">Distance should be 30 Mile from Pick up address and Drop off address</string>
+    <string name="distance_error_single">Distance between the pick-up address and the drop-off address above 70 miles, each mile adds $ .95 to a pallet</string>
 
     <!--Camera-->
     <string name="crop_action_error">Sorry! image is not cropped.</string>
