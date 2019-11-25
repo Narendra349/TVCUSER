@@ -112,7 +112,7 @@
                 android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text=" : 5.9 Km"
+                tools:text=" : 5.9 Mile"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/titillium_regular"

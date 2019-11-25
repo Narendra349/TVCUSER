@@ -53,12 +53,12 @@ public class PriceDistanceDTO {
     }
 
     public class Vehicle {
-        @SerializedName("min_km")
+        @SerializedName("min_mile")
         @Expose
-        private String min_km;
-        @SerializedName("max_km")
+        private String min_mile;
+        @SerializedName("max_mile")
         @Expose
-        private String max_km;
+        private String max_mile;
         @SerializedName("price")
         @Expose
         private String price;
@@ -66,20 +66,20 @@ public class PriceDistanceDTO {
         @Expose
         private ArrayList<Vehicle.Pallets> pallets;
 
-        public String getMin_km() {
-            return min_km;
+        public String getMin_mile() {
+            return min_mile;
         }
 
-        public void setMin_km(String min_km) {
-            this.min_km = min_km;
+        public void setMin_mile(String min_mile) {
+            this.min_mile = min_mile;
         }
 
-        public String getMax_km() {
-            return max_km;
+        public String getMax_mile() {
+            return max_mile;
         }
 
-        public void setMax_km(String max_km) {
-            this.max_km = max_km;
+        public void setMax_mile(String max_mile) {
+            this.max_mile = max_mile;
         }
 
         public String getPrice() {

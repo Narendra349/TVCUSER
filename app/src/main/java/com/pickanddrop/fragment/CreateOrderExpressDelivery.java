@@ -10,6 +10,8 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -144,7 +146,30 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
         createOrderExpressDeliveryBinding.etPickupDate.setOnClickListener(this);
         createOrderExpressDeliveryBinding.etPickupTime.setOnClickListener(this);
 
+        createOrderExpressDeliveryBinding.ccp.registerPhoneNumberTextView(createOrderExpressDeliveryBinding.etMobile);
+        createOrderExpressDeliveryBinding.ccp.setDefaultCountryUsingNameCode("US");
+        createOrderExpressDeliveryBinding.etMobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String tt = s.toString();
+                if(createOrderExpressDeliveryBinding.ccp.isValid()) {
+                    createOrderExpressDeliveryBinding.llMobileNumberError.setVisibility(View.GONE);
+                } else {
+                    createOrderExpressDeliveryBinding.llMobileNumberError.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         HashMap<String, String> hashMap1 = new HashMap<>();
         hashMap1.put(PN_NAME, "");
         hashMap1.put(PN_VALUE, getResources().getString(R.string.feet));
@@ -359,6 +384,10 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
             return false;
         } else if (mobile.trim().length() == 0) {
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_mobile_number), getString(R.string.ok), false);
+            createOrderExpressDeliveryBinding.etMobile.requestFocus();
+            return false;
+        } else if(!createOrderExpressDeliveryBinding.ccp.isValid()) {
+            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_vaild_number), getString(R.string.ok), false);
             createOrderExpressDeliveryBinding.etMobile.requestFocus();
             return false;
         } else if (!utilities.checkMobile(mobile)) {

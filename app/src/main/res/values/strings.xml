@@ -17,7 +17,7 @@
     <string name="support_error">Support information is not present.</string>
     <string name="retry">Try Again</string>
     <string name="reorder">Reorder</string>
-    <string name="distance_error_express">Distance should be 30 Mile from Pick up address and Drop off address</string>
+    <string name="distance_error_express">Distance from the pick-up address and drop-off address should be 30 miles are below.(Minimum - 1 mile)</string>
     <string name="distance_error_single">Distance between the pick-up address and the drop-off address above 70 miles, each mile adds $ .95 to a pallet</string>
 
     <!--Camera-->
@@ -48,6 +48,7 @@
     <string name="please_enter_first_name">Please enter your name.</string>
     <string name="please_enter_last_name">Please enter your last name.</string>
     <string name="please_enter_mobile_number">Please enter contact number.</string>
+    <string name="please_enter_vaild_number">Please enter vaild number.</string>
     <string name="please_enter_landline_number">Please enter landline number.</string>
     <string name="please_enter_address">Please enter address.</string>
     <string name="please_enter_valid_mobile_number">Mobile number is not valid.</string>
@@ -310,7 +311,7 @@
     <string name="time_duration_txt">2 h 00m</string>
     <string name="price">Price</string>
     <string name="us_dollar">\u0024</string>
-    <string name="km">KM</string>
+    <string name="mile">Mile</string>
 
     <string name="permission_rationale">Location permission is needed for core functionality</string>
     <string name="permission_denied_explanation">Permission was denied, but is needed for core
@@ -367,5 +368,6 @@
     <string name="single_delivery">Single</string>
     <string name="multiple_delivery">Multiple</string>
     <string name="express_delivery">Express</string>
+    <string name="enter_vaild_number">Enter vaild number</string>
 
 </resources>

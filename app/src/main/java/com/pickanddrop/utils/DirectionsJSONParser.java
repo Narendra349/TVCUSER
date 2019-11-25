@@ -1,4 +1,4 @@
-package com.pickanddrop.utils;//package com.atm.stockmarkettips.utils;
+package com.pickanddrop.utils;//package com.atm.stocmilearkettips.utils;
 //
 //
 //import org.json.JSONArray;

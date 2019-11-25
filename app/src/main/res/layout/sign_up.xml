@@ -212,11 +212,10 @@
                         android:layout_width="0dp"
                         android:layout_weight="3.5"
                         android:layout_height="match_parent"
-                        app:ccp_defaultCode="91"
+                        app:ccp_defaultCode="1"
                         android:gravity="center"
                         app:ccp_hideNameCode="true"
-                        app:ccp_defaultNameCode="IN"
-                        app:ccp_enablePhoneAutoFormatter="true"
+                        app:ccp_defaultNameCode="US"
                         app:ccp_textSize="@dimen/text_size_extra_normal"
                         android:background="@drawable/edit_profile_rect"
                         android:textSize="@dimen/text_size_extra_normal"
@@ -231,13 +230,36 @@
                         android:autofillHints="@string/mob_no_txt"
                         android:hint="@string/mob_no_txt"
                         android:layout_marginStart="@dimen/activity_margin_normal"
-                        android:maxLength="10"
+                        android:freezesText="true"
+                        android:singleLine="true"
                         android:imeOptions="actionNext"
                         android:inputType="phone" />
-
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_mobile_number_error"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="3.5"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:textColor="#FF0000"
+                        android:text="@string/enter_vaild_number"
+                        android:layout_width="0dp"
+                        android:layout_weight="6.5"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_margin_normal_"
+                        android:freezesText="true"
+                        android:singleLine="true"
+                         />
                 </LinearLayout>
 
-                    <EditText
+
+                <EditText
                         android:id="@+id/et_landline"
                         style="@style/edit_text_login_style"
                         android:layout_width="match_parent"

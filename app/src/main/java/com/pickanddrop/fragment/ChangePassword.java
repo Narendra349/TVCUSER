@@ -128,7 +128,8 @@ public class ChangePassword extends BaseFragment implements AppConstants, View.O
                     if (response.isSuccessful()) {
                         try {
                             if (response.body().getResult().equalsIgnoreCase("success")) {
-                                utilities.dialogOKre(context, "", response.body().getMessage(), getString(R.string.ok), new OnDialogConfirmListener() {
+                                String output = response.body().getMessage().substring(0, 1).toUpperCase() + response.body().getMessage().substring(1)+".";
+                                utilities.dialogOKre(context, "", output, getString(R.string.ok), new OnDialogConfirmListener() {
                                     @Override
                                     public void onYes() {
                                         if (appSession.getUserType().equals(DRIVER))
@@ -144,7 +145,8 @@ public class ChangePassword extends BaseFragment implements AppConstants, View.O
                                     }
                                 });
                             } else {
-                                utilities.dialogOK(context, "", response.body().getMessage(), context.getString(R.string.ok), false);
+                                String output = response.body().getMessage().substring(0, 1).toUpperCase() + response.body().getMessage().substring(1);
+                                utilities.dialogOK(context, "", output, context.getString(R.string.ok), false);
                             }
                         } catch (Exception e) {
                             e.printStackTrace();

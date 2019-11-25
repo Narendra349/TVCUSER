@@ -85,7 +85,7 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
 
         deliveryBookBinding.etDeliveryDate.setText(deliveryDTO.getDeliveryDate());
         deliveryBookBinding.etDeliveryTime.setText(deliveryDTO.getDeliveryTime());
-        deliveryBookBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.km));
+        deliveryBookBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.mile));
 
         if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.bike))) {
             deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.4"));

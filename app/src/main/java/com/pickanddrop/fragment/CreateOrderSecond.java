@@ -282,22 +282,22 @@ public class CreateOrderSecond extends BaseFragment implements AppConstants, Vie
                         loc2.setLatitude(Double.parseDouble(dropOffLat));
                         loc2.setLongitude(Double.parseDouble(dropOffLong));
 
-                        float distanceInkms = (loc1.distanceTo(loc2)) / 1000;
+                        float distanceInmiles = (loc1.distanceTo(loc2)) / 1000;
 
                         if (vehicleType.equalsIgnoreCase(getString(R.string.bike))) {
-                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getMotorbike());
+                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getMotorbike());
                         } else if (vehicleType.equalsIgnoreCase(getString(R.string.car))) {
-                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getCar());
+                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getCar());
                         } else if (vehicleType.equalsIgnoreCase(getString(R.string.van))) {
-                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getVan());
+                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getVan());
                         } else {
-                            totalDeliveryCost = distanceInkms * Double.parseDouble(otherDTO.getVehicle().getTruck());
+                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getTruck());
                         }
 
                         driverDeliveryCost = totalDeliveryCost - ((totalDeliveryCost * Float.parseFloat(otherDTO.getVehicle().getDriverPercentage()) / 100));
 
                         try {
-                            deliveryDTO.setDeliveryDistance(String.format("%.2f", Double.parseDouble(distanceInkms + "")));
+                            deliveryDTO.setDeliveryDistance(String.format("%.2f", Double.parseDouble(distanceInmiles + "")));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

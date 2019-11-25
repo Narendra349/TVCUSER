@@ -85,7 +85,7 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
 
         deliveryBookExpressDeliveryBinding.etDeliveryDate.setText(deliveryDTO.getPickupDate());
         deliveryBookExpressDeliveryBinding.etDeliveryTime.setText(deliveryDTO.getPickupTime());
-        deliveryBookExpressDeliveryBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.km));
+        deliveryBookExpressDeliveryBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.mile));
         deliveryBookExpressDeliveryBinding.etNoOfPallets.setText(deliveryDTO.getNoOfPallets());
 
         if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.bike))) {

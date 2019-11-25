@@ -15,6 +15,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,7 +99,36 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
     private void initView() {
         vehicleList = new ArrayList<>();
 
-//        signUpBinding.ccp.registerPhoneNumberTextView(signUpBinding.etMobile);
+        signUpBinding.ccp.registerPhoneNumberTextView(signUpBinding.etMobile);
+//        signUpBinding.ccp.enablePhoneAutoFormatter(true);
+//        signUpBinding.ccp.hideNameCode(true);
+        signUpBinding.ccp.setDefaultCountryUsingNameCode("US");
+        signUpBinding.etMobile.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String tt = s.toString();
+                if(signUpBinding.ccp.isValid()) {
+                    signUpBinding.llMobileNumberError.setVisibility(View.GONE);
+//                    ll_mobile_number_error
+//                    Toast.makeText(getContext(), "number " + signUpBinding.ccp.getFullNumber() + " is valid.", Toast.LENGTH_LONG).show();
+                } else {
+                    signUpBinding.llMobileNumberError.setVisibility(View.VISIBLE);
+//                    Toast.makeText(getContext(), "number " + signUpBinding.ccp.getFullNumber() + " not valid!!!", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 //        signUpBinding.ccp.enablePhoneAutoFormatter(true);
 //        signUpBinding.ccp.hideNameCode(true);
 //        signUpBinding.ccp.setDefaultCountryUsingNameCode("IN");
@@ -295,7 +326,12 @@ public class SignUp extends BaseFragment implements AppConstants, View.OnClickLi
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_mobile_number), getString(R.string.ok), false);
             signUpBinding.etMobile.requestFocus();
             return false;
-//        } else if (!utilities.checkMobile(mobile)) {
+        }else if(!signUpBinding.ccp.isValid()){
+            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_vaild_number), getString(R.string.ok), false);
+            signUpBinding.etMobile.requestFocus();
+            return false;
+
+//        } else if (!utili1ties.checkMobile(mobile)) {
 //            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_valid_mobile_number), getString(R.string.ok), false);
 //            signUpBinding.etMobile.requestFocus();
 //            return false;
