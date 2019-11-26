@@ -96,7 +96,7 @@ public class CreateOrderOne extends BaseFragment implements AppConstants, View.O
         createOrderOneBinding.etPickupAddress.setText(data.getPickupaddress());
         createOrderOneBinding.etItemDescription.setText(data.getItemDescription());
         createOrderOneBinding.etItemQuantity.setText(data.getItemQuantity());
-        createOrderOneBinding.etDeliveryDate.setText(data.getDeliveryDate());
+        createOrderOneBinding.etDeliveryDate.setText(data.getPickupDate());
         createOrderOneBinding.etDeliveryTime.setText(data.getDeliveryTime());
         createOrderOneBinding.etPickSpecialInst.setText(data.getPickupSpecialInst());
 
@@ -158,7 +158,7 @@ public class CreateOrderOne extends BaseFragment implements AppConstants, View.O
                     deliveryDTO.setPickupLastName(lastName);
                     deliveryDTO.setPickupMobNumber(mobile);
                     deliveryDTO.setPickupaddress(pickUpAddress);
-                    deliveryDTO.setDeliveryDate(deliDate);
+                    deliveryDTO.setPickupDate(deliDate);
                     deliveryDTO.setDeliveryTime(deliTime);
                     deliveryDTO.setPickupSpecialInst(specialInstruction);
                     deliveryDTO.setPickupLat(pickupLat);

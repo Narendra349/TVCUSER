@@ -51,7 +51,7 @@ import retrofit2.Response;
 
 import static android.app.Activity.RESULT_OK;
 
-public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppConstants, View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppConstants, View.OnClickListener {
 
     private Context context;
     private AppSession appSession;
@@ -118,11 +118,11 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
         createOrderExpressDeliveryDropBinding.etLastName.setText(deliveryDTO.getDropoffLastName());
         createOrderExpressDeliveryDropBinding.etMobile.setText(deliveryDTO.getDropoffMobNumber());
         createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(deliveryDTO.getDropoffaddress());
-        if(deliveryDTO.getDropoffLiftGate().equals("insidePickup")){
-            createOrderExpressDeliveryDropBinding.rbInsidePickup.setChecked(true);
-        }else if(deliveryDTO.getDropoffLiftGate().equals("liftGate")){
-            createOrderExpressDeliveryDropBinding.rbLiftGate.setChecked(true);
-        }
+//        if(deliveryDTO.getDropoffLiftGate().equals("insidePickup")){
+//            createOrderExpressDeliveryDropBinding.rbInsidePickup.setChecked(true);
+//        }else if(deliveryDTO.getDropoffLiftGate().equals("liftGate")){
+//            createOrderExpressDeliveryDropBinding.rbLiftGate.setChecked(true);
+//        }
 
 
         createOrderExpressDeliveryDropBinding.ccp.setCountryForPhoneCode(Integer.parseInt(deliveryDTO.getDropoffCountryCode()));
@@ -265,7 +265,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 
             }
         });
-        createOrderExpressDeliveryDropBinding.rgLiftGate.setOnCheckedChangeListener(this);
+//        createOrderExpressDeliveryDropBinding.rgLiftGate.setOnCheckedChangeListener(this);
 
     }
 
@@ -294,7 +294,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                     deliveryDTO.setDropoffLat(dropOffLat);
                     deliveryDTO.setDropoffLong(dropOffLong);
                     deliveryDTO.setDropoffCountryCode(countryCode);
-                    deliveryDTO.setDropoffLiftGate(dropoffLiftGate);
+//                    deliveryDTO.setDropoffLiftGate(dropoffLiftGate);
 
                     if (rescheduleStatus) {
                         callRescheduleOrderBookApi();
@@ -312,31 +312,31 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 
                         int parcelCount = Integer.parseInt(deliveryDTO.getNoOfPallets());
                         switch (deliveryDTO.getDeliveryType()) {
-                            case "EXPRESS":
+                            case "express":
                                 if (parcelCount == 1) {
                                     for (int i = 0; priceDistanceDTO.getVehicle().getPallets().size() > i; i++) {
                                         if (priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("1")) {
-                                            totalDeliveryCost = parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice());
+                                            totalDeliveryCost = (parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice())) + Double.parseDouble(priceDistanceDTO.getVehicle().getPrice());
                                         }
                                     }
 //                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletOne());
                                 } else if (parcelCount == 2) {
                                     for (int i = 0; priceDistanceDTO.getVehicle().getPallets().size() > i; i++) {
                                         if (priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("2")) {
-                                            totalDeliveryCost = parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice());
+                                            totalDeliveryCost = (parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice()))+ Double.parseDouble(priceDistanceDTO.getVehicle().getPrice());
                                         }
                                     }
 //                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletTwo());
                                 } else if (parcelCount >= 3) {
                                     for (int i = 0; priceDistanceDTO.getVehicle().getPallets().size() > i; i++) {
                                         if (priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("3")) {
-                                            totalDeliveryCost = parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice());
+                                            totalDeliveryCost = (parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice()))+ Double.parseDouble(priceDistanceDTO.getVehicle().getPrice());
                                         }
                                     }
 //                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletMore());
                                 }
                                 break;
-                            case "SINGLE":
+                            case "single":
                                 if (distanceInmiles <= 70) {
                                     if (parcelCount == 1) {
                                         totalDeliveryCost = parcelCount * Double.parseDouble("250");
@@ -356,7 +356,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                                     }
                                 }
                                 break;
-                            case "MULTIPLE":
+                            case "multiple":
                                 break;
                         }
 
@@ -457,21 +457,21 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 
             float distanceInmiles = (loc1.distanceTo(loc2)) / 1000;
             switch (deliveryDTO.getDeliveryType()) {
-                case "EXPRESS":
-                    if(distanceInmiles <= (Float.parseFloat(priceDistanceDTO.getVehicle().getMax_mile())))
+                case "express":
+                    if(distanceInmiles <= (Float.parseFloat(priceDistanceDTO.getVehicle().getMax_mile()))) {
 //            if(distanceInmiles <= 30)
-                        if(distanceInmiles >= (Float.parseFloat(priceDistanceDTO.getVehicle().getMin_mile())))
+                        if (distanceInmiles >= (Float.parseFloat(priceDistanceDTO.getVehicle().getMin_mile())))
                             createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
                         else {
                             createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
                             utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error_express), context.getResources().getString(R.string.ok), false);
                         }
-                    else {
+                    } else {
                         createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
                         utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error_express), context.getResources().getString(R.string.ok), false);
                     }
                     break;
-                case "SINGLE":
+                case "single":
                     if(distanceInmiles <= 70){
                         createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
                     }else if(distanceInmiles > 70){
@@ -487,7 +487,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                         });
                     }
                     break;
-                case "MULTIPLE":
+                case "multiple":
                     break;
             }
             System.out.println("distanceInmiles-->"+ distanceInmiles);
@@ -572,17 +572,17 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
             map.put("pickupaddress", deliveryDTO.getPickupaddress());
             map.put("item_description", deliveryDTO.getItemDescription());
             map.put("item_quantity", deliveryDTO.getItemQuantity());
-            map.put("delivery_date", deliveryDTO.getDeliveryDate());
+            map.put("delivery_date", deliveryDTO.getPickupDate());
             map.put("pickup_special_inst", deliveryDTO.getPickupSpecialInst());
             map.put("dropoff_first_name", deliveryDTO.getDropoffFirstName());
             map.put("dropoff_last_name", deliveryDTO.getDropoffLastName());
             map.put("dropoff_mob_number", deliveryDTO.getDropoffMobNumber());
             map.put("dropoff_special_inst", deliveryDTO.getDropoffSpecialInst());
             map.put("dropoffaddress", deliveryDTO.getDropoffaddress());
-            map.put("parcel_height", deliveryDTO.getParcelHeight());
-            map.put("parcel_width", deliveryDTO.getParcelWidth());
-            map.put("parcel_lenght", deliveryDTO.getParcelLenght());
-            map.put("parcel_weight", deliveryDTO.getParcelWeight());
+            map.put("parcel_height", deliveryDTO.getProductHeight());
+            map.put("parcel_width", deliveryDTO.getProductWidth());
+            map.put("parcel_lenght", deliveryDTO.getProductLength());
+            map.put("parcel_weight", deliveryDTO.getProductWeight());
             map.put("delivery_type", deliveryDTO.getDeliveryType());
             map.put("driver_delivery_cost", deliveryDTO.getDriverDeliveryCost());
             map.put("delivery_distance", deliveryDTO.getDeliveryDistance());
@@ -640,15 +640,15 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
         }
     }
 
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId){
-            case R.id.rb_inside_pickup:
-                dropoffLiftGate = "insidePickup";
-                break;
-            case R.id.rb_lift_gate:
-                dropoffLiftGate = "liftGate";
-                break;
-        }
-    }
+//    @Override
+//    public void onCheckedChanged(RadioGroup group, int checkedId) {
+//        switch (checkedId){
+//            case R.id.rb_inside_pickup:
+//                dropoffLiftGate = "insidePickup";
+//                break;
+//            case R.id.rb_lift_gate:
+//                dropoffLiftGate = "liftGate";
+//                break;
+//        }
+//    }
 }

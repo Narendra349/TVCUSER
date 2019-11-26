@@ -76,6 +76,9 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="AIzaSyDlsh7C8aFtDBA0LV2tQUUMoL8AXxddo5g" />-->
 
         <service
             android:name=".activities.LocationUpdatesIntentService"

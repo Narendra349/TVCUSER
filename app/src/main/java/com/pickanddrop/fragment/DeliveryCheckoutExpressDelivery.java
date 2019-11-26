@@ -84,7 +84,7 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
         }
 
         deliveryBookExpressDeliveryBinding.etDeliveryDate.setText(deliveryDTO.getPickupDate());
-        deliveryBookExpressDeliveryBinding.etDeliveryTime.setText(deliveryDTO.getPickupTime());
+        deliveryBookExpressDeliveryBinding.etDeliveryTime.setText(deliveryDTO.getDeliveryTime());
         deliveryBookExpressDeliveryBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.mile));
         deliveryBookExpressDeliveryBinding.etNoOfPallets.setText(deliveryDTO.getNoOfPallets());
 
@@ -106,13 +106,13 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.4"));
         }
 
-        if (deliveryDTO.getDeliveryType().equalsIgnoreCase("SINGLE")) {
+        if (deliveryDTO.getDeliveryType().equalsIgnoreCase("single")) {
             deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
             deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
-        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("MULTIPLE")) {
+        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("multiple")) {
             deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
             deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
-        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("EXPRESS")) {
+        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("express")) {
             deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
             deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
         }
@@ -153,24 +153,20 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
 
             Map<String, String> map = new HashMap<>();
             map.put("user_id", appSession.getUser().getData().getUserId());
-            map.put("pickup_comapny_name", deliveryDTO.getPickupComapnyName());
             map.put("pickup_first_name", deliveryDTO.getPickupFirstName());
             map.put("pickup_last_name", deliveryDTO.getPickupLastName());
             map.put("pickup_mob_number", deliveryDTO.getPickupMobNumber());
             map.put("pickupaddress", deliveryDTO.getPickupaddress());
-            map.put("item_description", deliveryDTO.getItemDescription());
-            map.put("item_quantity", deliveryDTO.getItemQuantity());
-            map.put("delivery_date", deliveryDTO.getDeliveryDate());
+            map.put("delivery_date", deliveryDTO.getPickupDate());
             map.put("pickup_special_inst", deliveryDTO.getPickupSpecialInst());
             map.put("dropoff_first_name", deliveryDTO.getDropoffFirstName());
             map.put("dropoff_last_name", deliveryDTO.getDropoffLastName());
             map.put("dropoff_mob_number", deliveryDTO.getDropoffMobNumber());
-            map.put("dropoff_special_inst", deliveryDTO.getDropoffSpecialInst());
             map.put("dropoffaddress", deliveryDTO.getDropoffaddress());
-            map.put("parcel_height", deliveryDTO.getParcelHeight());
-            map.put("parcel_width", deliveryDTO.getParcelWidth());
-            map.put("parcel_lenght", deliveryDTO.getParcelLenght());
-            map.put("parcel_weight", deliveryDTO.getParcelWeight());
+            map.put("parcel_height", deliveryDTO.getProductHeight());
+            map.put("parcel_width", deliveryDTO.getProductWidth());
+            map.put("parcel_lenght", deliveryDTO.getProductLength());
+            map.put("parcel_weight", deliveryDTO.getProductWeight());
             map.put("delivery_type", deliveryDTO.getDeliveryType());
             map.put("driver_delivery_cost", deliveryDTO.getDriverDeliveryCost());
             map.put("delivery_distance", deliveryDTO.getDeliveryDistance());
@@ -180,7 +176,6 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
                 map.put("delivery_cost", deliveryDTO.getDeliveryCost());
                 e.printStackTrace();
             }
-            map.put("dropoff_comapny_name", deliveryDTO.getDropoffComapnyName());
             map.put("vehicle_type", deliveryDTO.getVehicleType());
             map.put("pickUpLat", deliveryDTO.getPickupLat());
             map.put("pickUpLong", deliveryDTO.getPickupLong());
@@ -190,6 +185,10 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             map.put(PN_APP_TOKEN, APP_TOKEN);
             map.put("dropoff_country_code", deliveryDTO.getDropoffCountryCode());
             map.put("pickup_country_code", deliveryDTO.getPickupCountryCode());
+            map.put("pickup_elevator", deliveryDTO.getPickupLiftGate());
+            map.put("classGoods", deliveryDTO.getClassGoods());
+            map.put("typeGoods", deliveryDTO.getTypeGoods());
+            map.put("noOfPallets", deliveryDTO.getNoOfPallets());
             APIInterface apiInterface = APIClient.getClient();
             Call<OtherDTO> call = apiInterface.callCreateOrderApi(map);
             call.enqueue(new Callback<OtherDTO>() {

@@ -282,6 +282,7 @@
                     android:ellipsize="end"
                     android:focusable="false" />
                 <RadioGroup
+                    android:visibility="gone"
                     android:id="@+id/rg_lift_gate"
                     android:layout_marginTop="@dimen/activity_margin_normal_"
                     android:orientation="horizontal"
@@ -350,7 +351,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:visibility="visible"
-                        android:background="@color/transparent" />
+                        android:background="@color/transparent"
+                        style="@style/Widget.AppCompat.Spinner"
+                        android:dropDownWidth="match_parent"
+                        android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                        android:popupBackground="@android:color/white"
+                        android:popupElevation="3dp"
+                        android:stateListAnimator="@animator/spinner_sla"
+                        />
 
                     <ImageView
                         android:layout_width="wrap_content"

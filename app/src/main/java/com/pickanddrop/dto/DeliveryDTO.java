@@ -104,6 +104,7 @@ public class DeliveryDTO implements Parcelable{
     }
 
     public class Data implements Parcelable {
+
         @SerializedName("order_id")
         @Expose
         private String orderId;
@@ -131,9 +132,9 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("pickup_building_type")
         @Expose
         private String pickupBuildingType;
-        @SerializedName("pickup_elevator")
-        @Expose
-        private String pickupElevator;
+//        @SerializedName("pickup_elevator")
+//        @Expose
+//        private String pickupElevator;
         @SerializedName("pickup_floor")
         @Expose
         private String pickupFloor;
@@ -191,9 +192,9 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("item_quantity")
         @Expose
         private String itemQuantity;
-        @SerializedName("delivery_date")
-        @Expose
-        private String deliveryDate;
+//        @SerializedName("delivery_date")
+//        @Expose
+//        private String deliveryDate;
         @SerializedName("pickup_special_inst")
         @Expose
         private String pickupSpecialInst;
@@ -239,18 +240,18 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("dropoff_country")
         @Expose
         private String dropoffCountry;
-        @SerializedName("parcel_height")
-        @Expose
-        private String parcelHeight;
-        @SerializedName("parcel_width")
-        @Expose
-        private String parcelWidth;
-        @SerializedName("parcel_lenght")
-        @Expose
-        private String parcelLenght;
-        @SerializedName("parcel_weight")
-        @Expose
-        private String parcelWeight;
+//        @SerializedName("parcel_height")
+//        @Expose
+//        private String parcelHeight;
+//        @SerializedName("parcel_width")
+//        @Expose
+//        private String parcelWidth;
+//        @SerializedName("parcel_lenght")
+//        @Expose
+//        private String parcelLenght;
+//        @SerializedName("parcel_weight")
+//        @Expose
+//        private String parcelWeight;
         @SerializedName("delivery_distance")
         @Expose
         private String deliveryDistance;
@@ -266,15 +267,27 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("status")
         @Expose
         private String status;
+//        @SerializedName("pickup_lat")
+//        @Expose
+//        private String pickupLat;
         @SerializedName("pickup_lat")
         @Expose
         private String pickupLat;
+//        @SerializedName("pickup_long")
+//        @Expose
+//        private String pickupLong;
         @SerializedName("pickup_long")
         @Expose
         private String pickupLong;
+//        @SerializedName("dropoff_lat")
+//        @Expose
+//        private String dropoffLat;
         @SerializedName("dropoff_lat")
         @Expose
         private String dropoffLat;
+//        @SerializedName("dropoff_long")
+//        @Expose
+//        private String dropoffLong;
         @SerializedName("dropoff_long")
         @Expose
         private String dropoffLong;
@@ -351,18 +364,40 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("avgratingdriver")
         @Expose
         private String avgratingdriver;
+        @SerializedName("pickup_elevator")
+        @Expose
         private String pickupLiftGate;
+        @SerializedName("delivery_date")
+        @Expose
         private String pickupDate;
-        private String pickupTime;
+//        @SerializedName("delivery_time")
+//        @Expose
+//        private String pickupTime;
+        @SerializedName("classGoods")
+        @Expose
         private String classGoods;
+        @SerializedName("typeGoods")
+        @Expose
         private String typeGoods;
+        @SerializedName("noOfPallets")
+        @Expose
         private String noOfPallets;
+        @SerializedName("parcel_width")
+        @Expose
         private String productWidth;
+        @SerializedName("parcel_height")
+        @Expose
         private String productHeight;
+        @SerializedName("parcel_lenght")
+        @Expose
         private String productLength;
-        private String productMeasureType;
+//        private String productMeasureType;
+        @SerializedName("parcel_weight")
+        @Expose
         private String productWeight;
-        private String dropoffLiftGate;
+//        @SerializedName("")
+//        @Expose
+//        private String dropoffLiftGate;
 
 
         protected Data(Parcel in) {
@@ -383,7 +418,7 @@ public class DeliveryDTO implements Parcelable{
             pickupLastName = in.readString();
             pickupMobNumber = in.readString();
             pickupBuildingType = in.readString();
-            pickupElevator = in.readString();
+//            pickupElevator = in.readString();
             pickupFloor = in.readString();
             pickupPerson = in.readString();
             dropBuildingType = in.readString();
@@ -403,7 +438,7 @@ public class DeliveryDTO implements Parcelable{
             pickupCountry = in.readString();
             itemDescription = in.readString();
             itemQuantity = in.readString();
-            deliveryDate = in.readString();
+//            deliveryDate = in.readString();
             pickupSpecialInst = in.readString();
             dropoffFirstName = in.readString();
             dropoffLastName = in.readString();
@@ -418,10 +453,10 @@ public class DeliveryDTO implements Parcelable{
             dropoffState = in.readString();
             dropoffPostcode = in.readString();
             dropoffCountry = in.readString();
-            parcelHeight = in.readString();
-            parcelWidth = in.readString();
-            parcelLenght = in.readString();
-            parcelWeight = in.readString();
+//            parcelHeight = in.readString();
+//            parcelWidth = in.readString();
+//            parcelLenght = in.readString();
+//            parcelWeight = in.readString();
             deliveryDistance = in.readString();
             deliveryDuration = in.readString();
             deliveryTimeDuration = in.readString();
@@ -451,16 +486,16 @@ public class DeliveryDTO implements Parcelable{
             updatedAt = in.readString();
             pickupLiftGate = in.readString();
             pickupDate = in.readString();
-            pickupTime = in.readString();
+//            pickupTime = in.readString();
             classGoods = in.readString();
             typeGoods = in.readString();
             noOfPallets = in.readString();
             productWidth = in.readString();
             productHeight = in.readString();
             productLength = in.readString();
-            productMeasureType = in.readString();
+//            productMeasureType = in.readString();
             productWeight = in.readString();
-            dropoffLiftGate = in.readString();
+//            dropoffLiftGate = in.readString();
 
         }
 
@@ -608,13 +643,13 @@ public class DeliveryDTO implements Parcelable{
             this.pickupBuildingType = pickupBuildingType;
         }
 
-        public String getPickupElevator() {
-            return pickupElevator;
-        }
-
-        public void setPickupElevator(String pickupElevator) {
-            this.pickupElevator = pickupElevator;
-        }
+//        public String getPickupElevator() {
+//            return pickupElevator;
+//        }
+//
+//        public void setPickupElevator(String pickupElevator) {
+//            this.pickupElevator = pickupElevator;
+//        }
 
         public String getPickupFloor() {
             return pickupFloor;
@@ -768,13 +803,13 @@ public class DeliveryDTO implements Parcelable{
             this.itemQuantity = itemQuantity;
         }
 
-        public String getDeliveryDate() {
-            return deliveryDate;
-        }
-
-        public void setDeliveryDate(String deliveryDate) {
-            this.deliveryDate = deliveryDate;
-        }
+//        public String getDeliveryDate() {
+//            return deliveryDate;
+//        }
+//
+//        public void setDeliveryDate(String deliveryDate) {
+//            this.deliveryDate = deliveryDate;
+//        }
 
         public String getPickupSpecialInst() {
             return pickupSpecialInst;
@@ -888,37 +923,37 @@ public class DeliveryDTO implements Parcelable{
             this.dropoffCountry = dropoffCountry;
         }
 
-        public String getParcelHeight() {
-            return parcelHeight;
-        }
-
-        public void setParcelHeight(String parcelHeight) {
-            this.parcelHeight = parcelHeight;
-        }
-
-        public String getParcelWidth() {
-            return parcelWidth;
-        }
-
-        public void setParcelWidth(String parcelWidth) {
-            this.parcelWidth = parcelWidth;
-        }
-
-        public String getParcelLenght() {
-            return parcelLenght;
-        }
-
-        public void setParcelLenght(String parcelLenght) {
-            this.parcelLenght = parcelLenght;
-        }
-
-        public String getParcelWeight() {
-            return parcelWeight;
-        }
-
-        public void setParcelWeight(String parcelWeight) {
-            this.parcelWeight = parcelWeight;
-        }
+//        public String getParcelHeight() {
+//            return parcelHeight;
+//        }
+//
+//        public void setParcelHeight(String parcelHeight) {
+//            this.parcelHeight = parcelHeight;
+//        }
+//
+//        public String getParcelWidth() {
+//            return parcelWidth;
+//        }
+//
+//        public void setParcelWidth(String parcelWidth) {
+//            this.parcelWidth = parcelWidth;
+//        }
+//
+//        public String getParcelLenght() {
+//            return parcelLenght;
+//        }
+//
+//        public void setParcelLenght(String parcelLenght) {
+//            this.parcelLenght = parcelLenght;
+//        }
+//
+//        public String getParcelWeight() {
+//            return parcelWeight;
+//        }
+//
+//        public void setParcelWeight(String parcelWeight) {
+//            this.parcelWeight = parcelWeight;
+//        }
 
         public String getDeliveryDistance() {
             return deliveryDistance;
@@ -1152,13 +1187,13 @@ public class DeliveryDTO implements Parcelable{
             this.pickupDate = pickupDate;
         }
 
-        public String getPickupTime() {
-            return pickupTime;
-        }
-
-        public void setPickupTime(String pickupTime) {
-            this.pickupTime = pickupTime;
-        }
+//        public String getPickupTime() {
+//            return pickupTime;
+//        }
+//
+//        public void setPickupTime(String pickupTime) {
+//            this.pickupTime = pickupTime;
+//        }
 
         public String getClassGoods() {
             return classGoods;
@@ -1208,13 +1243,13 @@ public class DeliveryDTO implements Parcelable{
             this.productLength = productLength;
         }
 
-        public String getProductMeasureType() {
-            return productMeasureType;
-        }
-
-        public void setProductMeasureType(String productMeasureType) {
-            this.productMeasureType = productMeasureType;
-        }
+//        public String getProductMeasureType() {
+//            return productMeasureType;
+//        }
+//
+//        public void setProductMeasureType(String productMeasureType) {
+//            this.productMeasureType = productMeasureType;
+//        }
 
         public String getProductWeight() {
             return productWeight;
@@ -1224,13 +1259,13 @@ public class DeliveryDTO implements Parcelable{
             this.productWeight = productWeight;
         }
 
-        public String getDropoffLiftGate() {
-            return dropoffLiftGate;
-        }
-
-        public void setDropoffLiftGate(String dropoffLiftGate) {
-            this.dropoffLiftGate = dropoffLiftGate;
-        }
+//        public String getDropoffLiftGate() {
+//            return dropoffLiftGate;
+//        }
+//
+//        public void setDropoffLiftGate(String dropoffLiftGate) {
+//            this.dropoffLiftGate = dropoffLiftGate;
+//        }
 
         @Override
         public int describeContents() {
@@ -1253,7 +1288,7 @@ public class DeliveryDTO implements Parcelable{
             parcel.writeString(pickupLastName);
             parcel.writeString(pickupMobNumber);
             parcel.writeString(pickupBuildingType);
-            parcel.writeString(pickupElevator);
+//            parcel.writeString(pickupElevator);
             parcel.writeString(pickupFloor);
             parcel.writeString(pickupPerson);
             parcel.writeString(dropBuildingType);
@@ -1273,7 +1308,7 @@ public class DeliveryDTO implements Parcelable{
             parcel.writeString(pickupCountry);
             parcel.writeString(itemDescription);
             parcel.writeString(itemQuantity);
-            parcel.writeString(deliveryDate);
+//            parcel.writeString(deliveryDate);
             parcel.writeString(pickupSpecialInst);
             parcel.writeString(dropoffFirstName);
             parcel.writeString(dropoffLastName);
@@ -1288,10 +1323,10 @@ public class DeliveryDTO implements Parcelable{
             parcel.writeString(dropoffState);
             parcel.writeString(dropoffPostcode);
             parcel.writeString(dropoffCountry);
-            parcel.writeString(parcelHeight);
-            parcel.writeString(parcelWidth);
-            parcel.writeString(parcelLenght);
-            parcel.writeString(parcelWeight);
+//            parcel.writeString(parcelHeight);
+//            parcel.writeString(parcelWidth);
+//            parcel.writeString(parcelLenght);
+//            parcel.writeString(parcelWeight);
             parcel.writeString(deliveryDistance);
             parcel.writeString(deliveryDuration);
             parcel.writeString(deliveryTimeDuration);
@@ -1323,16 +1358,16 @@ public class DeliveryDTO implements Parcelable{
             parcel.writeString(avgratingdriver);
             parcel.writeString(pickupLiftGate);
             parcel.writeString(pickupDate);
-            parcel.writeString(pickupTime);
+//            parcel.writeString(pickupTime);
             parcel.writeString(classGoods);
             parcel.writeString(typeGoods);
             parcel.writeString(noOfPallets);
             parcel.writeString(productWidth);
             parcel.writeString(productHeight);
             parcel.writeString(productLength);
-            parcel.writeString(productMeasureType);
+//            parcel.writeString(productMeasureType);
             parcel.writeString(productWeight);
-            parcel.writeString(dropoffLiftGate);
+//            parcel.writeString(dropoffLiftGate);
 
         }
     }

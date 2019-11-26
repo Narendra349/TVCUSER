@@ -74,7 +74,7 @@ public class NearByAdapter extends RecyclerView.Adapter<NearByAdapter.ViewHolder
             viewHolder.ivProfile.setVisibility(View.GONE);
 
             viewHolder.tvDeliveryId.setText(context.getString(R.string.delivery_id_txt) + " - " + deliveryDTOArrayList.get(position).getOrderId());
-            viewHolder.tvDeliveryDate.setText(context.getString(R.string.delivery_datein_txt) + " - " + deliveryDTOArrayList.get(position).getDeliveryDate());
+            viewHolder.tvDeliveryDate.setText(context.getString(R.string.delivery_datein_txt) + " - " + deliveryDTOArrayList.get(position).getPickupDate());
             viewHolder.tvPickLoc.setText(context.getString(R.string.pickup_loc_txt) + " - " + deliveryDTOArrayList.get(position).getPickupaddress());
             viewHolder.tvDropLoc.setText(context.getString(R.string.delivery_loc_txt) + " - " + deliveryDTOArrayList.get(position).getDropoffaddress());
 

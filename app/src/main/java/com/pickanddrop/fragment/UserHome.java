@@ -248,7 +248,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                 getLatLong();
                 break;
             case R.id.btn_two:
-                bundle.putString("delivery_type", "SINGLE");
+                bundle.putString("delivery_type", "single");
                 createOrderExpressDelivery.setArguments(bundle);
                 addFragmentWithoutRemove(R.id.container_main, createOrderExpressDelivery, "CreateOrderExpressDelivery");
                 break;
@@ -256,7 +256,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                 if (fourStatus) {
                     utilities.dialogOK(context, "", getString(R.string.not_available), getString(R.string.ok), false);
                 } else {
-                    bundle.putString("delivery_type", "MULTIPLE");
+                    bundle.putString("delivery_type", "multiple");
                     createOrderExpressDelivery.setArguments(bundle);
                     addFragmentWithoutRemove(R.id.container_main, createOrderExpressDelivery, "CreateOrderExpressDelivery");
                 }
@@ -265,7 +265,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                 if (sameStatus) {
                     utilities.dialogOK(context, "", getString(R.string.not_available), getString(R.string.ok), false);
                 } else {
-                    bundle.putString("delivery_type", "EXPRESS");
+                    bundle.putString("delivery_type", "express");
                     createOrderExpressDelivery.setArguments(bundle);
                     addFragmentWithoutRemove(R.id.container_main, createOrderExpressDelivery, "CreateOrderExpressDelivery");
                 }
@@ -332,13 +332,15 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
 
                             LocationDTO.Endtime endtime = response.body().getEndtime();
                             if (endtime.getFlage4hours() != null && endtime.getFlage4hours().equalsIgnoreCase("true")) {
-//                                fourStatus = true;
-                                fourStatus = false;
-//                                userHomeBinding.btnFour.setEnabled(false);
-//                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
+                                fourStatus = true;
+//                                fourStatus = false;
+                                userHomeBinding.btnFour.setEnabled(false);
+                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
                             } else {
-                                fourStatus = false;
-//                                fourStatus = true;
+//                                fourStatus = false;
+                                fourStatus = true;
+                                userHomeBinding.btnFour.setEnabled(false);
+                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
 //                                userHomeBinding.btnFour.setEnabled(true);
                             }
 

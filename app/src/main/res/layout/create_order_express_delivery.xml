@@ -372,7 +372,7 @@
                         android:background="@drawable/edit_profile_rect"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:visibility="visible">
+                        android:visibility="gone">
 
                         <Spinner
                             android:id="@+id/sp_type"

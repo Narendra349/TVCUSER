@@ -83,7 +83,7 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
             e.printStackTrace();
         }
 
-        deliveryBookBinding.etDeliveryDate.setText(deliveryDTO.getDeliveryDate());
+        deliveryBookBinding.etDeliveryDate.setText(deliveryDTO.getPickupDate());
         deliveryBookBinding.etDeliveryTime.setText(deliveryDTO.getDeliveryTime());
         deliveryBookBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.mile));
 
@@ -159,17 +159,17 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
             map.put("pickupaddress", deliveryDTO.getPickupaddress());
             map.put("item_description", deliveryDTO.getItemDescription());
             map.put("item_quantity", deliveryDTO.getItemQuantity());
-            map.put("delivery_date", deliveryDTO.getDeliveryDate());
+            map.put("delivery_date", deliveryDTO.getPickupDate());
             map.put("pickup_special_inst", deliveryDTO.getPickupSpecialInst());
             map.put("dropoff_first_name", deliveryDTO.getDropoffFirstName());
             map.put("dropoff_last_name", deliveryDTO.getDropoffLastName());
             map.put("dropoff_mob_number", deliveryDTO.getDropoffMobNumber());
             map.put("dropoff_special_inst", deliveryDTO.getDropoffSpecialInst());
             map.put("dropoffaddress", deliveryDTO.getDropoffaddress());
-            map.put("parcel_height", deliveryDTO.getParcelHeight());
-            map.put("parcel_width", deliveryDTO.getParcelWidth());
-            map.put("parcel_lenght", deliveryDTO.getParcelLenght());
-            map.put("parcel_weight", deliveryDTO.getParcelWeight());
+            map.put("parcel_height", deliveryDTO.getProductHeight());
+            map.put("parcel_width", deliveryDTO.getProductWidth());
+            map.put("parcel_lenght", deliveryDTO.getProductLength());
+            map.put("parcel_weight", deliveryDTO.getProductWeight());
             map.put("delivery_type", deliveryDTO.getDeliveryType());
             map.put("driver_delivery_cost", deliveryDTO.getDriverDeliveryCost());
             map.put("delivery_distance", deliveryDTO.getDeliveryDistance());
@@ -226,7 +226,7 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
                 public void onFailure(Call<OtherDTO> call, Throwable t) {
                     if (mProgressDialog != null && mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
-                    Log.e(TAG, t.toString());
+                    Log.e(" Testing ", t.toString());
                     utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
 
                 }

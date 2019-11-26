@@ -53,10 +53,10 @@ public class PriceDistanceDTO {
     }
 
     public class Vehicle {
-        @SerializedName("min_mile")
+        @SerializedName("min_km")
         @Expose
         private String min_mile;
-        @SerializedName("max_mile")
+        @SerializedName("max_km")
         @Expose
         private String max_mile;
         @SerializedName("price")

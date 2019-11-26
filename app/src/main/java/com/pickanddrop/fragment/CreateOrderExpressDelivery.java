@@ -108,7 +108,7 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
 
 //                pickupLiftGate = createOrderExpressDeliveryBinding.etPickSpecialInst.getText().toString();
         createOrderExpressDeliveryBinding.etPickupDate.setText(data.getPickupDate());
-        createOrderExpressDeliveryBinding.etPickupTime.setText(data.getPickupTime());
+        createOrderExpressDeliveryBinding.etPickupTime.setText(data.getDeliveryTime());
         createOrderExpressDeliveryBinding.etGoodClass.setText(data.getClassGoods());
         createOrderExpressDeliveryBinding.etGoodType.setText(data.getTypeGoods());
         createOrderExpressDeliveryBinding.etPalletsCount.setText(data.getNoOfPallets());
@@ -116,9 +116,9 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
         createOrderExpressDeliveryBinding.etGoodHight.setText(data.getProductHeight());
         createOrderExpressDeliveryBinding.etGoodLength.setText(data.getProductLength());
         createOrderExpressDeliveryBinding.etPalletsTotalWeight.setText(data.getProductWeight());
-        if(data.getPickupLiftGate().equals("insidePickup")){
+        if(data.getPickupLiftGate().equals("no")){
             createOrderExpressDeliveryBinding.rbInsidePickup.setChecked(true);
-        }else if(data.getPickupLiftGate().equals("liftGate")){
+        }else if(data.getPickupLiftGate().equals("yes")){
             createOrderExpressDeliveryBinding.rbLiftGate.setChecked(true);
         }
 
@@ -243,15 +243,15 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
                     deliveryDTO.setPickupaddress(pickUpAddress);
                     deliveryDTO.setPickupLiftGate(pickupLiftGate);
                     deliveryDTO.setPickupDate(pickDate);
-                    deliveryDTO.setPickupTime(pickTime);
+                    deliveryDTO.setDeliveryTime(pickTime);
                     deliveryDTO.setClassGoods(ClassGood);
                     deliveryDTO.setTypeGoods(TypeGood);
                     deliveryDTO.setNoOfPallets(NoofPallets);
                     deliveryDTO.setProductWidth(productWidth);
                     deliveryDTO.setProductHeight(productHeight);
                     deliveryDTO.setProductLength(productLength);
-                    deliveryDTO.setProductLength(productMeasure);
-                    deliveryDTO.setProductLength(productWeight);
+//                    deliveryDTO.setProductMeasureType(productMeasure);
+                    deliveryDTO.setProductWeight(productWeight);
                     deliveryDTO.setPickupSpecialInst(specialInstruction);
                     deliveryDTO.setPickupLat(pickupLat);
                     deliveryDTO.setPickupLong(pickupLong);
@@ -442,10 +442,10 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
     public void onCheckedChanged(RadioGroup group, int checkedId) {
       switch (checkedId){
           case R.id.rb_inside_pickup:
-              pickupLiftGate = "insidePickup";
+              pickupLiftGate = "no";
               break;
           case R.id.rb_lift_gate:
-              pickupLiftGate = "liftGate";
+              pickupLiftGate = "yes";
               break;
       }
     }

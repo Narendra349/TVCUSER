@@ -148,7 +148,7 @@ public class DeliveryStatus extends BaseFragment implements View.OnClickListener
 
         deliveryStatusBinding.tvPickupLocation.setText(getString(R.string.pickup_loc_txt) +" - "+ deliveryDTO.getPickupaddress());
         deliveryStatusBinding.tvDropAddress.setText(getString(R.string.delivery_loc_txt) +" - "+ deliveryDTO.getDropoffaddress());
-        deliveryStatusBinding.tvDeliveryDate.setText(getString(R.string.delivery_datein_txt) +" - "+ deliveryDTO.getDeliveryDate());
+        deliveryStatusBinding.tvDeliveryDate.setText(getString(R.string.delivery_datein_txt) +" - "+ deliveryDTO.getPickupDate());
         deliveryStatusBinding.tvDeliveryTime.setText(getString(R.string.delivery_time) +" - "+ deliveryDTO.getDeliveryTime());
     }
 

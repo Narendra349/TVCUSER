@@ -118,7 +118,7 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                             .setCancelable(false)
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    callCancelDeliveryApi(false);
+                                    callCancelDeliveryApi(true);
                                 }
                             })
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -203,10 +203,10 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                                 deliveryDetailsBinding.tvDropAddress.setText(getString(R.string.drop_off_txt) + " - " + data.getDropoffaddress());
 
                                 deliveryDetailsBinding.tvParcelPallets.setText(getString(R.string.parcel_p_txt) + " - " + data.getNoOfPallets());
-                                deliveryDetailsBinding.tvParcelHeight.setText(getString(R.string.parcel_h_txt) + " - " + data.getParcelHeight());
-                                deliveryDetailsBinding.tvParcelWidth.setText(getString(R.string.parcel_wid_txt) + " - " + data.getParcelWidth());
-                                deliveryDetailsBinding.tvParcelLenght.setText(getString(R.string.parcel_l_txt) + " - " + data.getParcelLenght());
-                                deliveryDetailsBinding.tvParcelWeight.setText(getString(R.string.parcel_w_txt) + " - " + data.getParcelWeight());
+                                deliveryDetailsBinding.tvParcelHeight.setText(getString(R.string.parcel_h_txt) + " - " + data.getProductHeight());
+                                deliveryDetailsBinding.tvParcelWidth.setText(getString(R.string.parcel_wid_txt) + " - " + data.getProductWidth());
+                                deliveryDetailsBinding.tvParcelLenght.setText(getString(R.string.parcel_l_txt) + " - " + data.getProductLength());
+                                deliveryDetailsBinding.tvParcelWeight.setText(getString(R.string.parcel_w_txt) + " - " + data.getProductWeight());
 
                                 deliveryDetailsBinding.tvRemainingTime.setText(getString(R.string.due_in) + " - " + data.getDeliveryTimeDuration());
 //                                deliveryDetailsBinding.tvItemDesc.setText(getString(R.string.item_des_txt) + " - " + data.getItemDescription());

@@ -345,6 +345,7 @@
     <string name="not_available">This delivery option is not available at this time.</string>
 
     <string name="google_maps_key">AIzaSyC7NOJ5VbOZ2uzheASfYPZVPMniO0QAcys</string>
+<!--    <string name="google_maps_key">AIzaSyBzst3J6xQNWRjHOynWWPY8LGgsXT98rt4</string>-->
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -356,10 +357,10 @@
     <string name="inside_pick">Inside Pickup</string>
     <string name="lift_gate">Lift gate</string>
     <string name="number_of_pallets">Number of Pallets</string>
-    <string name="total_weight_of_the_package">Total weight of the Package</string>.
-    <string name="good_width">Width</string>
-    <string name="good_height">Height</string>
-    <string name="good_length">Length</string>
+    <string name="total_weight_of_the_package">Total weight(LBS) of the Package.</string>.
+    <string name="good_width">Width (inch)</string>
+    <string name="good_height">Height (inch)</string>
+    <string name="good_length">Length (inch)</string>
     <string name="good_measurement_type">Measurement Type</string>
     <string name="drop_contact_detail_txt">Drop Contact Detail</string>
     <string name="select_vehicle_txt">Select Vehicle</string>

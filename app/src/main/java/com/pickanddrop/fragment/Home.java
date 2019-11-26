@@ -231,6 +231,7 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                     startActivityForResult(builder.build(getActivity()), REQUEST_PICK_PLACE);
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
                     e.printStackTrace();
+                    System.out.println("e.printStackTrace() "+e);
                 }
                 break;
             case R.id.iv_current_loc:
