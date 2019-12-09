@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.media.RatingCompat;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +37,7 @@ import com.pickanddrop.dto.LoginDTO;
 import com.pickanddrop.model.LoginModel;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
+import com.pickanddrop.utils.DrawableClickListener;
 import com.pickanddrop.utils.PermissionUtil;
 import com.pickanddrop.utils.Utilities;
 
@@ -48,10 +54,16 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
     private AppSession appSession;
     private Utilities utilities;
     private LogInBinding logInBinding;
+    String password_status = "show";
     private String email = "", password = "", notiificationId = "";
     private String TAG = Login.class.getName();
     private final int PERMISSIONS_REQUEST_READ_CONTACTS = 1212;
-    String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
+    private final int PERMISSIONS_REQUEST_READ_CAMERA = 4125;
+    private final int PERMISSIONS_REQUEST_READ_SIGNATURE = 188;
+    String[] PERMISSIONS_CAMERA = {Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private String[] SIGNATURE_PERMISSIONS = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     LoginModel loginModel = new LoginModel();
 
     @Nullable
@@ -84,6 +96,35 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
             notiificationId = FirebaseInstanceId.getInstance().getToken();
             appSession.setFCMToken(notiificationId);
         }
+        if (!hasPermissions(context, PERMISSIONS)) {
+            ActivityCompat.requestPermissions(((SplashActivity) context), PERMISSIONS, PERMISSIONS_REQUEST_READ_CONTACTS);
+        }
+
+        logInBinding.etPassword.setDrawableClickListener(new DrawableClickListener() {
+            @Override
+            public void onClick(DrawablePosition target) {
+                if (target == DrawablePosition.RIGHT) {//Do something here
+                    if (password_status.equals("show")) {
+                        password_status = "hide";
+
+
+//                        logInBinding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                        logInBinding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        logInBinding.etPassword.setSelection(logInBinding.etPassword.getText().length());
+//                        logInBinding.etPassword.setTypeface(Typeface.create("titillium_regular", Typeface.NORMAL));
+                        logInBinding.etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_eye_off_black_24dp, 0);
+                    } else if (password_status.equals("hide")) {
+                        password_status = "show";
+//                        logInBinding.etPassword.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        logInBinding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        logInBinding.etPassword.setSelection(logInBinding.etPassword.getText().length());
+//                        logInBinding.etPassword.setTypeface(Typeface.create("titillium_regular",Typeface.NORMAL));
+                        logInBinding.etPassword.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic__eye_black_24dp, 0);
+                    }
+                }
+            }
+        });
+
     }
 
     public boolean isValid() {
@@ -127,7 +168,6 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
             map.put("latitude", "0.0");
             map.put("longitude", "0.0");
 
-
             loginModel.setCode(APP_TOKEN);
             loginModel.setEmail(email);
             loginModel.setPassword(password);
@@ -148,7 +188,6 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
                             if (response.body().getResult().equalsIgnoreCase("success")) {
                                 appSession.setUser(response.body());
                                 appSession.setLoginUser(true);
-
                                 appSession.setUserType(appSession.getUser().getData().getUserType());
                                 startActivity(new Intent(context, DrawerContentSlideActivity.class));
                                 getActivity().finish();
@@ -180,7 +219,6 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
                 Utilities.hideKeyboard(logInBinding.btnLogin);
                 email = logInBinding.etEmail.getText().toString();
                 password = logInBinding.etPassword.getText().toString().trim();
-
                 if (hasPermissions(context, PERMISSIONS)) {
                     if (isValid()) {
                         getLoginApi();
@@ -188,7 +226,6 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
                 } else {
                     ActivityCompat.requestPermissions(((SplashActivity) context), PERMISSIONS, PERMISSIONS_REQUEST_READ_CONTACTS);
                 }
-
                 break;
             case R.id.tv_forgot_password:
                 addFragmentWithoutRemove(R.id.container_splash, new ForgotPassword(), "ForgotPassword");
@@ -228,6 +265,7 @@ public class Login extends BaseFragment implements AppConstants, View.OnClickLis
                         getLoginApi();
                     }
                 } else {
+                    ActivityCompat.requestPermissions(((SplashActivity) context), PERMISSIONS, PERMISSIONS_REQUEST_READ_CONTACTS);
                     Toast.makeText(context, getString(R.string.permission_required), Toast.LENGTH_SHORT).show();
                 }
                 break;

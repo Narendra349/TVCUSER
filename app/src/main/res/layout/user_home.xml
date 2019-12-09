@@ -42,6 +42,53 @@
                     android:textColor="@color/white_color"
                     android:textSize="@dimen/text_size_extra_normal" />
 
+<!--                <ImageButton-->
+<!--                    android:background="@color/transparent"-->
+<!--                    android:id="@+id/tv_noti"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:src="@drawable/notification"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/titillium_regular"-->
+<!--                    android:paddingEnd="@dimen/activity_margin_normal_"-->
+<!--                    android:visibility="visible"-->
+<!--                    android:textColor="@color/white_color"-->
+<!--                    android:textSize="@dimen/text_size_extra_normal" />-->
+                <FrameLayout
+                    android:visibility="visible"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    style="?attr/actionButtonStyle"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:id="@+id/tv_noti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/notification"/>
+
+                    <TextView
+                        android:id="@+id/tv_noti_count"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="right|end|top"
+                        android:layout_marginEnd="-5dp"
+                        android:layout_marginRight="-5dp"
+                        android:layout_marginTop="3dp"
+                        android:background="@drawable/item_count"
+                        android:gravity="center"
+                        android:padding="3dp"
+                        android:textColor="@android:color/white"
+                        android:text="90+"
+                        android:textSize="8sp"/>
+
+                </FrameLayout>
+
                 <TextView
                     android:id="@+id/tv_deliveries"
                     android:layout_width="wrap_content"

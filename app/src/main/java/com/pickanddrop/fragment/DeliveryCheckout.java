@@ -88,33 +88,33 @@ public class DeliveryCheckout extends BaseFragment implements AppConstants, View
         deliveryBookBinding.etDistance.setText(deliveryDTO.getDeliveryDistance() +" "+ getString(R.string.mile));
 
         if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.bike))) {
-            deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llVan.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llTruck.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llVan.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llTruck.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.car))) {
-            deliveryBookBinding.llBike.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llVan.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llTruck.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookBinding.llBike.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llVan.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llTruck.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.van))) {
-            deliveryBookBinding.llBike.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llTruck.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookBinding.llBike.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llTruck.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.truck))) {
-            deliveryBookBinding.llBike.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llVan.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookBinding.llBike.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llVan.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.llCar.setAlpha(Float.parseFloat("0.1"));
         }
 
 
-        if (deliveryDTO.getDeliveryType().equalsIgnoreCase("2HOUR")) {
-            deliveryBookBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
-        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("4HOUR")) {
-            deliveryBookBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
-        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("SAMEDAY")) {
-            deliveryBookBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
+        if (deliveryDTO.getDeliveryType().equalsIgnoreCase("single")) {
+            deliveryBookBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.btnSame.setAlpha(Float.parseFloat("0.1"));
+        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("multiple")) {
+            deliveryBookBinding.btnSame.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.btnTwo.setAlpha(Float.parseFloat("0.1"));
+        } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("express")) {
+            deliveryBookBinding.btnTwo.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
         }
     }
 

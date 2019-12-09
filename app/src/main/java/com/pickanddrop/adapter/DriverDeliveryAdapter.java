@@ -39,8 +39,8 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);
@@ -154,9 +154,9 @@ public class DriverDeliveryAdapter extends RecyclerView.Adapter<DriverDeliveryAd
         }
 
         if (deliveryDTOArrayList.get(position).getDeliveryType() != null) {
-            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("2HOUR")) {
+            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
-            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("4HOUR")) {
+            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("multiple")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
             } else {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.same_hours));

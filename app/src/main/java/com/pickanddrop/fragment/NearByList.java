@@ -247,4 +247,6 @@ public class NearByList extends BaseFragment implements View.OnClickListener, Ap
             });
         }
     }
+
+
 }

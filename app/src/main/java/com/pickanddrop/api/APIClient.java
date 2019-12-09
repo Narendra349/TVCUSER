@@ -1,6 +1,8 @@
 package com.pickanddrop.api;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pickanddrop.BuildConfig;
 import com.pickanddrop.utils.AppConstants;
 
@@ -15,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class APIClient implements AppConstants {
 
     public static APIInterface getClient() {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

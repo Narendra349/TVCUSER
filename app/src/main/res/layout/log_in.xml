@@ -24,7 +24,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/loginlogo" />
+            app:srcCompat="@drawable/loginlogo"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/text_margin_small"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            android:textSize="@dimen/text_size_large"
+            android:fontFamily="@font/titillium_regular"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            android:textColor="@color/white_color" />
+
+
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline6"
@@ -61,13 +76,14 @@
             app:layout_constraintTop_toBottomOf="@+id/guideline6"
             android:imeOptions="actionNext"/>
 
-        <EditText
+        <com.pickanddrop.utils.CustomEditText
             android:id="@+id/et_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_margin_medium"
             android:inputType="textPassword"
             android:hint="@string/password"
+            android:drawableRight="@drawable/ic__eye_black_24dp"
             android:autofillHints="@string/password"
             style="@style/edit_text_login_style"
             app:layout_constraintEnd_toStartOf="@+id/guideline8"

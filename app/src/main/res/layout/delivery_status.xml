@@ -67,7 +67,7 @@
                     android:id="@+id/iv_profile"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/user"
+                    android:src="@drawable/user_praba"
                     app:layout_constraintBottom_toBottomOf="@id/ll_desc"
                     app:layout_constraintEnd_toStartOf="@+id/ll_desc"
                     app:layout_constraintHorizontal_bias="0.5"

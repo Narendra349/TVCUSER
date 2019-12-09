@@ -118,7 +118,7 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                             .setCancelable(false)
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
-                                    callCancelDeliveryApi(true);
+                                    callCancelDeliveryApi(false);
                                 }
                             })
                             .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
@@ -248,8 +248,8 @@ public class DeliveryDetails extends BaseFragment implements AppConstants, View.
                                     if (data.getDeliveryStatus().equals("7")) {
                                         deliveryDetailsBinding.btnRoute.setEnabled(false);
                                         deliveryDetailsBinding.btnDeliver.setEnabled(false);
-                                        deliveryDetailsBinding.btnRoute.setAlpha(Float.parseFloat("0.4"));
-                                        deliveryDetailsBinding.btnDeliver.setAlpha(Float.parseFloat("0.4"));
+                                        deliveryDetailsBinding.btnRoute.setAlpha(Float.parseFloat("0.1"));
+                                        deliveryDetailsBinding.btnDeliver.setAlpha(Float.parseFloat("0.1"));
                                     }
 
                                     if (historyStatus) {

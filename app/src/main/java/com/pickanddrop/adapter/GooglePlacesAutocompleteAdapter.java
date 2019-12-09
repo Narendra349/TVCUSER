@@ -27,6 +27,9 @@ public class GooglePlacesAutocompleteAdapter extends ArrayAdapter<String> implem
     public static String PLACES_API_BASE = "https://maps.googleapis.com/maps/api/place";
     public static String TYPE_AUTOCOMPLETE = "/autocomplete";
     public static String OUT_JSON = "/json";
+//    public static final String API_KEY = "AIzaSyC8zLVIAUFLybEitHDR2JviLTXJy7JVeZc";
+
+
     public static final String API_KEY = "AIzaSyC6lRBIOxTw25tWUA91uBtJkbd7-8uWMsM";
     public ListView listView;
     public Context context;

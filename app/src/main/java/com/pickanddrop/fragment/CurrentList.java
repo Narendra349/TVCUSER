@@ -23,6 +23,7 @@ import com.pickanddrop.api.APIClient;
 import com.pickanddrop.api.APIInterface;
 import com.pickanddrop.databinding.RvListBinding;
 import com.pickanddrop.dto.DeliveryDTO;
+import com.pickanddrop.dto.OtherDTO;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.OnItemClickListener;
@@ -81,9 +82,12 @@ public class CurrentList extends BaseFragment implements View.OnClickListener, A
         initView();
         initToolbar();
         callUserDeliveryApi();
+        callRemoveNotifyCountApi();
+
     }
 
     private void initToolbar() {
+
         if (status.equalsIgnoreCase(getString(R.string.notification))) {
             rvListBinding.toolbarTitle.setText(getString(R.string.notification));
         } else if (status.equalsIgnoreCase(getString(R.string.delivery_history))) {
@@ -207,7 +211,13 @@ public class CurrentList extends BaseFragment implements View.OnClickListener, A
                                 rvListBinding.rvDeliveries.setVisibility(View.GONE);
                                 rvListBinding.tvNoRecord.setVisibility(View.VISIBLE);
 
-                                rvListBinding.tvNoRecord.setText(response.body().getMessage());
+                                if(status.equals(getString(R.string.notification)))
+                                 rvListBinding.tvNoRecord.setText("No notification !");
+                                else if(status.equals(getString(R.string.notification)))
+                                    rvListBinding.tvNoRecord.setText("No delivery history !");
+                                else
+                                    rvListBinding.tvNoRecord.setText("No orders !");
+
 //                                utilities.dialogOK(context, "", response.body().getMessage(), context.getString(R.string.ok), false);
                             }
                         } catch (Exception e) {
@@ -226,4 +236,39 @@ public class CurrentList extends BaseFragment implements View.OnClickListener, A
             });
         }
     }
+
+    public void callRemoveNotifyCountApi() {
+        if (!utilities.isNetworkAvailable())
+            utilities.dialogOK(context, "", context.getResources().getString(R.string.network_error), context.getString(R.string.ok), false);
+        else {
+            Map<String, String> map = new HashMap<>();
+            map.put("user_id", appSession.getUser().getData().getUserId());
+            map.put(PN_APP_TOKEN, APP_TOKEN);
+
+            APIInterface apiInterface = APIClient.getClient();
+            Call<OtherDTO> call = apiInterface.callRemoveNotifyCount(map);
+            call.enqueue(new Callback<OtherDTO>() {
+                @Override
+                public void onResponse(Call<OtherDTO> call, Response<OtherDTO> response) {
+                    if (response.isSuccessful()) {
+                        try {
+                            if (response.body().getResult().equalsIgnoreCase("success")) {
+                            } else {
+                                utilities.dialogOK(context, "", response.body().getMessage(), context.getString(R.string.ok), false);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<OtherDTO> call, Throwable t) {
+                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
+                    Log.e(TAG, t.toString());
+                }
+            });
+        }
+    }
+
 }

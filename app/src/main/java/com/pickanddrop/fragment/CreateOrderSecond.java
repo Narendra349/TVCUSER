@@ -169,7 +169,7 @@ public class CreateOrderSecond extends BaseFragment implements AppConstants, Vie
                 public void onFailure(Call<OtherDTO> call, Throwable t) {
                     if (mProgressDialog != null && mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
-                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
+                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error)+t.toString(), context.getResources().getString(R.string.ok), false);
                     Log.e(TAG, t.toString());
                 }
             });

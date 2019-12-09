@@ -1,7 +1,9 @@
 package com.pickanddrop.fragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
@@ -109,7 +111,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
         if (rescheduleStatus) {
             setValues();
         } else {
-            getPrice();
+            getPrice11();
         }
     }
 
@@ -143,7 +145,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
         createOrderExpressDeliveryDropBinding.etDropoffAddress.setEnabled(false);
     }
 
-    public void getPrice() {
+    public void getPrice11() {
         if (!utilities.isNetworkAvailable())
             utilities.dialogOK(context, "", context.getResources().getString(R.string.network_error), context.getString(R.string.ok), false);
         else {
@@ -174,13 +176,11 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                             e.printStackTrace();
                         }
                     }
-                }
-
-                @Override
+                }@Override
                 public void onFailure(Call<PriceDistanceDTO> call, Throwable t) {
                     if (mProgressDialog != null && mProgressDialog.isShowing())
                         mProgressDialog.dismiss();
-                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
+                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error)+t.toString(), context.getResources().getString(R.string.ok), false);
                     Log.e(TAG, t.toString());
                 }
             });
@@ -283,6 +283,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                 dropOffAddress = createOrderExpressDeliveryDropBinding.etDropoffAddress.getText().toString();
 
                 if (isValid()) {
+
                     DeliveryCheckoutExpressDelivery deliveryCheckoutExpressDelivery = new DeliveryCheckoutExpressDelivery();
                     Bundle bundle = new Bundle();
 
@@ -297,6 +298,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
 //                    deliveryDTO.setDropoffLiftGate(dropoffLiftGate);
 
                     if (rescheduleStatus) {
+                        priceCollecrion();
                         callRescheduleOrderBookApi();
                     } else {
 
@@ -348,11 +350,11 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                                 } else if (distanceInmiles > 70) {
                                     float addDistanceInMiles = distanceInmiles - 70;
                                     if (parcelCount == 1) {
-                                        totalDeliveryCost = (parcelCount * Double.parseDouble("250")) + (parcelCount * 0.95);
+                                        totalDeliveryCost = (parcelCount * Double.parseDouble("250")) + (addDistanceInMiles * 0.95);
                                     } else if (parcelCount == 2) {
-                                        totalDeliveryCost = (parcelCount * Double.parseDouble("225")) + (parcelCount * 0.95);
+                                        totalDeliveryCost = (parcelCount * Double.parseDouble("225")) + (addDistanceInMiles * 0.95);
                                     } else if (parcelCount >= 3) {
-                                        totalDeliveryCost = (parcelCount * Double.parseDouble("200")) + (parcelCount * 0.95);
+                                        totalDeliveryCost = (parcelCount * Double.parseDouble("200")) + (addDistanceInMiles * 0.95);
                                     }
                                 }
                                 break;
@@ -467,14 +469,35 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                             utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error_express), context.getResources().getString(R.string.ok), false);
                         }
                     } else {
-                        createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
-                        utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error_express), context.getResources().getString(R.string.ok), false);
+
+//                        createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
+//                        utilities.dialogOK(context, "", context.getResources().getString(R.string.distance_error_express), context.getResources().getString(R.string.ok), false);
+
+                        new AlertDialog.Builder(context)
+                                .setMessage(getString(R.string.above_30_mile))
+                                .setCancelable(false)
+                                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
+                                        deliveryDTO.setDeliveryType("single");
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        createOrderExpressDeliveryDropBinding.etDropoffAddress.setText("");
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
                     }
                     break;
                 case "single":
                     if(distanceInmiles <= 70){
                         createOrderExpressDeliveryDropBinding.etDropoffAddress.setText(getAddressFromLatLong(place.getLatLng().latitude, place.getLatLng().longitude, false));
                     }else if(distanceInmiles > 70){
+
                         utilities.dialogOKre(context, "Note", context.getResources().getString(R.string.distance_error_single), getString(R.string.ok), new OnDialogConfirmListener() {
                             @Override
                             public void onYes() {
@@ -594,6 +617,7 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
             map.put("dropOffLong", deliveryDTO.getDropoffLong());
             map.put("dropOffLat", deliveryDTO.getDropoffLat());
             map.put("delivery_time", deliveryDTO.getDeliveryTime());
+            map.put("is_pallet", deliveryDTO.getIs_pallet());
             map.put(PN_APP_TOKEN, APP_TOKEN);
             map.put("dropoff_country_code", "91");
             map.put("pickup_country_code", "91");
@@ -638,6 +662,126 @@ public class CreateOrderExpressDeliveryDrop extends BaseFragment implements AppC
                 }
             });
         }
+    }
+
+    private void priceCollecrion(){
+
+            Location loc1 = new Location("");
+            loc1.setLatitude(Double.parseDouble(deliveryDTO.getPickupLat()));
+            loc1.setLongitude(Double.parseDouble(deliveryDTO.getPickupLong()));
+
+            Location loc2 = new Location("");
+            loc2.setLatitude(Double.parseDouble(dropOffLat));
+            loc2.setLongitude(Double.parseDouble(dropOffLong));
+
+            float distanceInmiles = (loc1.distanceTo(loc2)) / 1000;
+
+            int parcelCount = Integer.parseInt(deliveryDTO.getNoOfPallets());
+            switch (deliveryDTO.getDeliveryType()) {
+                case "express":
+                    if (parcelCount == 1) {
+                        for (int i = 0; priceDistanceDTO.getVehicle().getPallets().size() > i; i++) {
+                            if (priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("1")) {
+                                totalDeliveryCost = (parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice())) + Double.parseDouble(priceDistanceDTO.getVehicle().getPrice());
+                            }
+                        }
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletOne());
+                    } else if (parcelCount == 2) {
+                        for (int i = 0; priceDistanceDTO.getVehicle().getPallets().size() > i; i++) {
+                            if (priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("2")) {
+                                totalDeliveryCost = (parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice()))+ Double.parseDouble(priceDistanceDTO.getVehicle().getPrice());
+                            }
+                        }
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletTwo());
+                    } else if (parcelCount >= 3) {
+                        for (int i = 0; priceDistanceDTO.getVehicle().getPallets().size() > i; i++) {
+                            if (priceDistanceDTO.getVehicle().getPallets().get(i).getPallets().equals("3")) {
+                                totalDeliveryCost = (parcelCount * Double.parseDouble(priceDistanceDTO.getVehicle().getPallets().get(i).getPrice()))+ Double.parseDouble(priceDistanceDTO.getVehicle().getPrice());
+                            }
+                        }
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble(otherDTO.getVehicle().getIfPalletMore());
+                    }
+                    break;
+                case "single":
+                    if (distanceInmiles <= 70) {
+                        if (parcelCount == 1) {
+                            totalDeliveryCost = parcelCount * Double.parseDouble("250");
+                        } else if (parcelCount == 2) {
+                            totalDeliveryCost = parcelCount * Double.parseDouble("225");
+                        } else if (parcelCount >= 3) {
+                            totalDeliveryCost = parcelCount * Double.parseDouble("200");
+                        }
+                    } else if (distanceInmiles > 70) {
+                        float addDistanceInMiles = distanceInmiles - 70;
+                        if (parcelCount == 1) {
+                            totalDeliveryCost = (parcelCount * Double.parseDouble("250")) + (addDistanceInMiles * 0.95);
+                        } else if (parcelCount == 2) {
+                            totalDeliveryCost = (parcelCount * Double.parseDouble("225")) + (addDistanceInMiles * 0.95);
+                        } else if (parcelCount >= 3) {
+                            totalDeliveryCost = (parcelCount * Double.parseDouble("200")) + (addDistanceInMiles * 0.95);
+                        }
+                    }
+                    break;
+                case "multiple":
+                    break;
+            }
+
+//                        if(parcelCount == 1){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble("250");
+//                        }else if(parcelCount == 2){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble("225");
+//                        }else if(parcelCount >= 3){
+//                            totalDeliveryCost =  parcelCount * Double.parseDouble("200");
+//                        }
+
+//                        if (vehicleType.equalsIgnoreCase(getString(R.string.bike))) {
+//                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getMotorbike());
+//                        } else if (vehicleType.equalsIgnoreCase(getString(R.string.car))) {
+//                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getCar());
+//                        } else if (vehicleType.equalsIgnoreCase(getString(R.string.van))) {
+//                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getVan());
+//                        } else {
+//                            totalDeliveryCost = distanceInmiles * Double.parseDouble(otherDTO.getVehicle().getTruck());
+//                        }
+
+            driverDeliveryCost = totalDeliveryCost + (Float.parseFloat(priceDistanceDTO.getVehicle().getPrice()));
+//                        driverDeliveryCost = totalDeliveryCost + (Float.parseFloat("25"));
+
+//                        driverDeliveryCost = totalDeliveryCost - ((totalDeliveryCost * Float.parseFloat(otherDTO.getVehicle().getDriverPercentage()) / 100));
+
+            try {
+                deliveryDTO.setDeliveryDistance(String.format("%.2f", Double.parseDouble(distanceInmiles + "")));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String price = totalDeliveryCost + "";
+                if (price.contains(",")) {
+                    price = price.replaceAll(",", "");
+                } else {
+                    price = totalDeliveryCost+"";
+                }
+
+                deliveryDTO.setDeliveryCost(String.format("%2f", Double.parseDouble(price)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String price = driverDeliveryCost + "";
+                if (price.contains(",")) {
+                    price = price.replaceAll(",", "");
+                } else {
+                    price = driverDeliveryCost+"";
+                }
+
+                deliveryDTO.setDriverDeliveryCost(String.format("%2f", Double.parseDouble(price)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
     }
 
 //    @Override

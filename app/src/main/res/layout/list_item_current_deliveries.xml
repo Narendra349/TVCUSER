@@ -20,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/full_click"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:padding="@dimen/activity_margin_normal"
@@ -36,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/user_ic" />
+        app:srcCompat="@drawable/user_praba" />
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -88,7 +89,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
     <TextView
         android:id="@+id/tv_pickup_location"
         android:layout_marginStart="@dimen/text_margin_small"
@@ -104,7 +104,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
     <TextView
         android:id="@+id/tv_delivery_location"
         android:layout_marginStart="@dimen/text_margin_small"
@@ -120,7 +119,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
     <TextView
         android:id="@+id/tv_delivery_contact_name"
         android:layout_marginStart="@dimen/text_margin_small"
@@ -135,7 +133,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
     <TextView
         android:id="@+id/tv_delivery_contact_no"
         android:layout_marginStart="@dimen/text_margin_small"
@@ -150,7 +147,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
     <TextView
         android:id="@+id/tv_driver_name"
         android:layout_marginStart="@dimen/text_margin_small"
@@ -165,7 +161,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
     <TextView
         android:id="@+id/tv_driver_no"
         android:layout_marginStart="@dimen/text_margin_small"
@@ -180,8 +175,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini"
         android:ellipsize="end"/>
-
-    <TextView
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_order_status"
+            android:layout_marginStart="@dimen/text_margin_small"
+            android:fontFamily="@font/titillium_regular"
+            android:textColor="@color/white_color"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_width="0dp"
+            android:text="@string/price"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/text_margin_small"
+            app:layout_constraintEnd_toStartOf="@id/iv_vehicle"
+            app:layout_constraintTop_toBottomOf="@id/tv_driver_no"
+            app:layout_constraintStart_toEndOf="@id/barrier"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/text_margin_mini" />
+        <TextView
         android:id="@+id/tv_price_text"
         android:layout_marginStart="@dimen/text_margin_small"
         android:fontFamily="@font/titillium_regular"
@@ -193,7 +204,7 @@
         android:textStyle="bold"
         android:layout_marginEnd="@dimen/text_margin_small"
         app:layout_constraintEnd_toStartOf="@id/iv_vehicle"
-        app:layout_constraintTop_toBottomOf="@id/tv_driver_no"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_status"
         app:layout_constraintStart_toEndOf="@id/barrier"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/text_margin_mini" />
@@ -221,6 +232,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_driver_no"
         app:layout_constraintEnd_toEndOf="parent"/>
+
 
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

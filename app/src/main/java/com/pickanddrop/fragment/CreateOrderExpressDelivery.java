@@ -50,7 +50,7 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
     private Utilities utilities;
     private CreateOrderExpressDeliveryBinding createOrderExpressDeliveryBinding;
     private String countryCode = "", deliveryType = "", pickupLat = "", pickupLong = "", companyName = "", firstName = "", lastName = "", mobile = "", pickUpAddress = "", itemDescription = "", itemQuantity = "", deliDate = "", deliTime = "", specialInstruction = ""
-    ,pickDate = "", pickTime = "", pickupLiftGate = "", ClassGood = "", TypeGood = "", NoofPallets = "", productWidth = "", productHeight = "", productLength = "", productMeasure = "", productWeight;
+    ,pickDate = "", pickTime = "", pickupLiftGate = "",nonpallet_pallets = "", ClassGood = "", TypeGood = "", NoofPallets = "", productWidth = "", productHeight = "", productLength = "", productMeasure = "", productWeight;
     private PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
     private static final int REQUEST_PICK_PLACE = 2345;
     private int mYear, mMonth, mDay;
@@ -120,6 +120,11 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
             createOrderExpressDeliveryBinding.rbInsidePickup.setChecked(true);
         }else if(data.getPickupLiftGate().equals("yes")){
             createOrderExpressDeliveryBinding.rbLiftGate.setChecked(true);
+        }
+        if(data.getIs_pallet().equals("no")){
+            createOrderExpressDeliveryBinding.rbNonPallets.setChecked(true);
+        }else if(data.getPickupLiftGate().equals("yes")){
+            createOrderExpressDeliveryBinding.rbPallets.setChecked(true);
         }
 
 
@@ -199,12 +204,14 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
             }
         });
         createOrderExpressDeliveryBinding.rgLiftGate.setOnCheckedChangeListener(this);
+        createOrderExpressDeliveryBinding.rgPallets.setOnCheckedChangeListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_next:
+                UserHome userHome = new UserHome();
                 Utilities.hideKeyboard(createOrderExpressDeliveryBinding.btnNext);
                 countryCode = createOrderExpressDeliveryBinding.ccp.getSelectedCountryCode();
                 Log.e(TAG, ">>>>>>>>>>>>>>"+countryCode);
@@ -250,6 +257,7 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
                     deliveryDTO.setProductWidth(productWidth);
                     deliveryDTO.setProductHeight(productHeight);
                     deliveryDTO.setProductLength(productLength);
+                    deliveryDTO.setIs_pallet(nonpallet_pallets);
 //                    deliveryDTO.setProductMeasureType(productMeasure);
                     deliveryDTO.setProductWeight(productWeight);
                     deliveryDTO.setPickupSpecialInst(specialInstruction);
@@ -257,7 +265,7 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
                     deliveryDTO.setPickupLong(pickupLong);
                     deliveryDTO.setDeliveryType(deliveryType);
                     deliveryDTO.setPickupCountryCode(countryCode);
-
+//                    userHome.handler.removeCallbacks(userHome.myRunnable);
                     bundle.putParcelable("deliveryDTO", deliveryDTO);
                     bundle.putString("delivery_type",deliveryType);
                     createOrderExpressDeliveryDrop.setArguments(bundle);
@@ -414,6 +422,10 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_no_of_pallets), getString(R.string.ok), false);
             createOrderExpressDeliveryBinding.etPalletsCount.requestFocus();
             return false;
+        }else if (Integer.parseInt(NoofPallets) > 26) {
+            utilities.dialogOK(context, getString(R.string.validation_title), "Maxmium pallets 26.", getString(R.string.ok), false);
+            createOrderExpressDeliveryBinding.etPalletsCount.requestFocus();
+            return false;
         }else if (productWidth == null || productWidth.equals("")) {
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_enter_parcel_width), getString(R.string.ok), false);
             createOrderExpressDeliveryBinding.etGoodWidth.requestFocus();
@@ -434,6 +446,10 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
             utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_select_pickup_lifegate_date), getString(R.string.ok), false);
             createOrderExpressDeliveryBinding.rgLiftGate.requestFocus();
             return false;
+        }else if (nonpallet_pallets == null || nonpallet_pallets.equals("")) {
+            utilities.dialogOK(context, getString(R.string.validation_title), getString(R.string.please_select_pallets), getString(R.string.ok), false);
+            createOrderExpressDeliveryBinding.rgPallets.requestFocus();
+            return false;
         }
         return true;
     }
@@ -446,6 +462,12 @@ public class CreateOrderExpressDelivery extends BaseFragment implements AppConst
               break;
           case R.id.rb_lift_gate:
               pickupLiftGate = "yes";
+              break;
+          case R.id.rb_pallets:
+              nonpallet_pallets = "yes";
+              break;
+          case R.id.rb_non_pallets:
+              nonpallet_pallets = "no";
               break;
       }
     }

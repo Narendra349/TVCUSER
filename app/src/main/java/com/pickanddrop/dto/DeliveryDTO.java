@@ -141,6 +141,12 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("pickup_person")
         @Expose
         private String pickupPerson;
+
+        @SerializedName("is_pallet")
+        @Expose
+        private String is_pallet;
+
+
         @SerializedName("drop_building_type")
         @Expose
         private String dropBuildingType;
@@ -213,6 +219,7 @@ public class DeliveryDTO implements Parcelable{
         @SerializedName("message")
         @Expose
         private String message;
+
         @SerializedName("dropoff_special_inst")
         @Expose
         private String dropoffSpecialInst;
@@ -495,6 +502,7 @@ public class DeliveryDTO implements Parcelable{
             productLength = in.readString();
 //            productMeasureType = in.readString();
             productWeight = in.readString();
+            is_pallet = in.readString();
 //            dropoffLiftGate = in.readString();
 
         }
@@ -502,6 +510,8 @@ public class DeliveryDTO implements Parcelable{
         public Data () {
 
         }
+
+
 
         public final Creator<Data> CREATOR = new Creator<Data>() {
             @Override
@@ -521,6 +531,14 @@ public class DeliveryDTO implements Parcelable{
 
         public void setAvgratingdriver(String avgratingdriver) {
             this.avgratingdriver = avgratingdriver;
+        }
+
+        public String getIs_pallet() {
+            return is_pallet;
+        }
+
+        public void setIs_pallet(String is_pallet) {
+            this.is_pallet = is_pallet;
         }
 
         public String getMessage() {
@@ -1367,6 +1385,7 @@ public class DeliveryDTO implements Parcelable{
             parcel.writeString(productLength);
 //            parcel.writeString(productMeasureType);
             parcel.writeString(productWeight);
+            parcel.writeString(is_pallet);
 //            parcel.writeString(dropoffLiftGate);
 
         }

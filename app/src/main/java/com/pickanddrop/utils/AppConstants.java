@@ -43,9 +43,13 @@ public interface AppConstants {
 
 
     String ENGLISH = "en";
-    String BASE_URL= "http://18.218.152.94/index.php/ApiController/";
+    String BASE_URL= "http://18.218.152.94/index.php/";
+
+//    String BASE_URL= "http://18.218.152.94/index.php/ApiController/";
+//      String BASE_URL= "http://192.168.1.51/pickanddeliver/index.php/";
 //    String BASE_URL = "http://18.221.13.149/pickanddeliver/admin/index.php/ApiController/";
-    String IMAGE_URL = "http://18.221.13.149/pickanddeliver/admin/image/";
+//    String IMAGE_URL = "http://18.221.13.149/pickanddeliver/admin/image/";
+    String IMAGE_URL = "http://18.218.152.94/image/";
     String APP_TOKEN = "COURIERAPP-30062016";
 
     String CUSTOMER = "1";
@@ -56,7 +60,6 @@ public interface AppConstants {
     String PN_DEVICE_TYPE = "device_type";
     String PN_APP_TOKEN = "code";
     String PN_DEVICE_TOKEN = "device_token";
-
 
     //    public static final String emailPattern = "\"^([a-zA-Z0-9._-]+)@{1}(([a-zA-Z0-9_-]{1,67})|([a-zA-Z0-9-]+\\\\.[a-zA-Z0-9-]{1,67}))\\\\.(([a-zA-Z0-9]{2,6})(\\\\.[a-zA-Z0-9]{2,6})?)$\"";
     public static final String mobilePattern = "^[0-9]{8,14}$";

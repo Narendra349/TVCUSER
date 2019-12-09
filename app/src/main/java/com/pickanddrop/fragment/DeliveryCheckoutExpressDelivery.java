@@ -41,7 +41,7 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
     private DeliveryBookExpressDeliveryBinding deliveryBookExpressDeliveryBinding;
     private String email = "";
     private DeliveryDTO.Data deliveryDTO;
-    private String TAG = DeliveryCheckout.class.getName();
+    private String TAG = DeliveryCheckoutExpressDelivery.class.getName();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,32 +89,32 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
         deliveryBookExpressDeliveryBinding.etNoOfPallets.setText(deliveryDTO.getNoOfPallets());
 
         if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.bike))) {
-            deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llVan.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llTruck.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llVan.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llTruck.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.car))) {
-            deliveryBookExpressDeliveryBinding.llBike.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llVan.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llTruck.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.llBike.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llVan.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llTruck.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.van))) {
-            deliveryBookExpressDeliveryBinding.llBike.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llTruck.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.llBike.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llTruck.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getVehicleType().equalsIgnoreCase(getString(R.string.truck))) {
-            deliveryBookExpressDeliveryBinding.llBike.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llVan.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.llBike.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llVan.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.llCar.setAlpha(Float.parseFloat("0.1"));
         }
 
         if (deliveryDTO.getDeliveryType().equalsIgnoreCase("single")) {
-            deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("multiple")) {
-            deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.btnSame.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.1"));
         } else if (deliveryDTO.getDeliveryType().equalsIgnoreCase("express")) {
-            deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.4"));
-            deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
+            deliveryBookExpressDeliveryBinding.btnTwo.setAlpha(Float.parseFloat("0.1"));
+            deliveryBookExpressDeliveryBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
         }
 
     }
@@ -133,7 +133,12 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
         switch (view.getId()){
             case R.id.btn_submit:
                 Utilities.hideKeyboard(deliveryBookExpressDeliveryBinding.btnSubmit);
-                callOrderBookApi();
+                CardStripePayment cardStripePayment = new CardStripePayment();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("deliveryDTO", deliveryDTO);
+                cardStripePayment.setArguments(bundle);
+                addFragmentWithoutRemove(R.id.container_main, cardStripePayment, "cardStripePayment");
+//                callOrderBookApi();
                 break;
             case R.id.iv_back:
                 ((DrawerContentSlideActivity) context).popFragment();
@@ -189,6 +194,8 @@ public class DeliveryCheckoutExpressDelivery extends BaseFragment implements App
             map.put("classGoods", deliveryDTO.getClassGoods());
             map.put("typeGoods", deliveryDTO.getTypeGoods());
             map.put("noOfPallets", deliveryDTO.getNoOfPallets());
+            map.put("is_pallet", deliveryDTO.getIs_pallet());
+
             APIInterface apiInterface = APIClient.getClient();
             Call<OtherDTO> call = apiInterface.callCreateOrderApi(map);
             call.enqueue(new Callback<OtherDTO>() {

@@ -58,54 +58,66 @@
             android:paddingStart="@dimen/activity_margin_normal"
             android:paddingTop="@dimen/activity_margin_medium"
             android:paddingBottom="@dimen/activity_margin_medium">
-
             <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="15dp"
                 android:fillViewport="true"
                 android:scrollbars="none">
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <com.pickanddrop.utils.ImageViewCircular
-                        android:id="@+id/iv_profile"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/activity_margin_medium"
-                        android:src="@drawable/user_ic" />
-
-                    <TextView
-                        android:id="@+id/tv_name"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:id="@+id/toplayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        tools:text="@string/app_name"
-                        android:textColor="@color/white_color"
-                        android:fontFamily="@font/titillium_regular"
-                        android:textStyle="bold"
-                        android:layout_marginTop="@dimen/text_margin_small"
-                        android:textSize="@dimen/text_size_extra_normal"/>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/activity_margin_medium"
-                        android:background="@color/white_color" />
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_menu"
+                        android:orientation="vertical">
+                        <com.pickanddrop.utils.ImageViewCircular
+                            android:id="@+id/iv_profile"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/activity_margin_medium"
+                            android:src="@drawable/user_praba" />
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            tools:text="@string/app_name"
+                            android:textColor="@color/white_color"
+                            android:fontFamily="@font/titillium_regular"
+                            android:textStyle="bold"
+                            android:layout_marginTop="@dimen/text_margin_small"
+                            android:textSize="@dimen/text_size_extra_normal"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/activity_margin_medium"
+                            android:background="@color/white_color" />
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_menu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/activity_margin_medium"
+                            android:nestedScrollingEnabled="false" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_alignParentBottom="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/activity_margin_medium"
-                        android:nestedScrollingEnabled="false" />
-
-                </LinearLayout>
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tv_version"
+                            android:layout_marginRight="5dp"
+                            android:layout_gravity="end"
+                            android:textColor="#ffffff"
+                            android:text="version"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </RelativeLayout>
             </android.support.v4.widget.NestedScrollView>
-
         </LinearLayout>
 
     </android.support.v4.widget.DrawerLayout>

@@ -248,7 +248,7 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                 getLatLong();
                 break;
             case R.id.btn_two:
-                bundle.putString("delivery_type", "2HOUR");
+                bundle.putString("delivery_type", "single");
                 createOrderOne.setArguments(bundle);
                 addFragmentWithoutRemove(R.id.container_main, createOrderOne, "CreateOrderOne");
                 break;
@@ -256,7 +256,7 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                 if (fourStatus) {
                     utilities.dialogOK(context, "", getString(R.string.not_available), getString(R.string.ok), false);
                 } else {
-                    bundle.putString("delivery_type", "4HOUR");
+                    bundle.putString("delivery_type", "multiple");
                     createOrderOne.setArguments(bundle);
                     addFragmentWithoutRemove(R.id.container_main, createOrderOne, "CreateOrderOne");
                 }
@@ -265,7 +265,7 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                 if (sameStatus) {
                     utilities.dialogOK(context, "", getString(R.string.not_available), getString(R.string.ok), false);
                 } else {
-                    bundle.putString("delivery_type", "SAMEDAY");
+                    bundle.putString("delivery_type", "express");
                     createOrderOne.setArguments(bundle);
                     addFragmentWithoutRemove(R.id.container_main, createOrderOne, "CreateOrderOne");
                 }
@@ -334,7 +334,7 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                             if (endtime.getFlage4hours() != null && endtime.getFlage4hours().equalsIgnoreCase("true")) {
                                 fourStatus = true;
 //                                mvHomeBinding.btnFour.setEnabled(false);
-                                mvHomeBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
+                                mvHomeBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
                             } else {
                                 fourStatus = false;
 //                                mvHomeBinding.btnFour.setEnabled(true);
@@ -343,7 +343,7 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                             if (endtime.getFlageSameday() != null && endtime.getFlageSameday().equalsIgnoreCase("true")) {
                                 sameStatus = true;
 //                                mvHomeBinding.btnSame.setEnabled(false);
-                                mvHomeBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
+                                mvHomeBinding.btnSame.setAlpha(Float.parseFloat("0.1"));
                             } else {
                                 sameStatus = false;
 //                                mvHomeBinding.btnSame.setEnabled(true);
@@ -381,8 +381,8 @@ public class Home extends BaseFragment implements AppConstants, View.OnClickList
                                     requestOptions = new RequestOptions();
                                     requestOptions.centerCrop();
                                     requestOptions.override(40, 40);
-                                    requestOptions.placeholder(R.drawable.user_ic);
-                                    requestOptions.error(R.drawable.user_ic);
+                                    requestOptions.placeholder(R.drawable.user_praba);
+                                    requestOptions.error(R.drawable.user_praba);
                                     LocationDTO.Datum datum = (LocationDTO.Datum) marker.getTag();
                                     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                                     View v = inflater.inflate(R.layout.marker_window, null);

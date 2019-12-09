@@ -59,7 +59,7 @@ public class Utilities implements AppConstants {
     public static String input1 = "yyyy-MM-dd";
     public static String input2 = "HH:mm";
     public static String outPut = "yyyy:MM:dd";
-//    public static String outPut = "MMMM dd, yyyy @ hh:mm a";
+    //    public static String outPut = "MMMM dd, yyyy @ hh:mm a";
     public static String outPut1 = "MMM dd, yyyy";
     public static String outPut2 = "yyyy:MM:dd:HH:mm";
 
@@ -183,10 +183,10 @@ public class Utilities implements AppConstants {
                 case TelephonyManager.NETWORK_TYPE_UMTS:
                     Log.i(getClass().getName(), "400 - 7000 kbps");
                     return true; // ~ 400-7000 kbps
-            /*
-             * Above API level 7, make sure to set android:targetSdkVersion
-             * to appropriate level to use these
-             */
+                /*
+                 * Above API level 7, make sure to set android:targetSdkVersion
+                 * to appropriate level to use these
+                 */
                 case TelephonyManager.NETWORK_TYPE_EHRPD: // API level 11
                     Log.i(getClass().getName(), "1 - 2 Mbps");
                     return true; // ~ 1-2 Mbps
@@ -743,9 +743,9 @@ public class Utilities implements AppConstants {
         }
         /*
          * if (myDir.isDirectory()) { String[] children = myDir.list(); for (int
-		 * i = 0; i < children.length; i++) { new File(myDir,
-		 * children[i]).delete(); } }
-		 */
+         * i = 0; i < children.length; i++) { new File(myDir,
+         * children[i]).delete(); } }
+         */
         return "";
     }
 
@@ -912,12 +912,12 @@ public class Utilities implements AppConstants {
     public int getSpinnerValue(ArrayList<HashMap<String, String>> hashMapArrayList, String name){
         int position = 0;
         if (name != null  && !name.equals("")){
-        for (int i = 0; i < hashMapArrayList.size(); i++){
-            if (name.replaceAll("_", " ").equalsIgnoreCase(hashMapArrayList.get(i).get(PN_VALUE).replaceAll("_", " "))){
-                position = i;
-                break;
+            for (int i = 0; i < hashMapArrayList.size(); i++){
+                if (name.replaceAll("_", " ").equalsIgnoreCase(hashMapArrayList.get(i).get(PN_VALUE).replaceAll("_", " "))){
+                    position = i;
+                    break;
+                }
             }
-        }
         }
         return position;
     }

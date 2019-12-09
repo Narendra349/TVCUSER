@@ -80,8 +80,8 @@ public class NotificationDialog extends AppCompatActivity implements OnClickList
             requestOptions = new RequestOptions();
             requestOptions.centerCrop();
             requestOptions.override(150, 150);
-            requestOptions.placeholder(R.drawable.user_ic);
-            requestOptions.error(R.drawable.user_ic);
+            requestOptions.placeholder(R.drawable.user_praba);
+            requestOptions.error(R.drawable.user_praba);
 
             if (bundle != null) {
                 type = bundle.getString("type");

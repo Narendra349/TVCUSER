@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TVC</string>
+    <string name="app_name">TruckVanCarGo</string>
     <!--Error-->
     <string name="congratulation">Congratulations</string>
     <string name="server_error">Can not connect to server! Please try again.</string>
@@ -18,7 +18,7 @@
     <string name="retry">Try Again</string>
     <string name="reorder">Reorder</string>
     <string name="distance_error_express">Distance from the pick-up address and drop-off address should be 30 miles are below.(Minimum - 1 mile)</string>
-    <string name="distance_error_single">Distance between the pick-up address and the drop-off address above 70 miles, each mile adds $ .95 to a pallet</string>
+    <string name="distance_error_single">Distance between the pick-up address and the drop-off address above 70 miles, each mile adds $ .95</string>
 
     <!--Camera-->
     <string name="crop_action_error">Sorry! image is not cropped.</string>
@@ -69,6 +69,7 @@
     <string name="please_enter_item_quantity">Please enter item quantity.</string>
     <string name="please_select_deli_date">Please select delivery date.</string>
     <string name="please_select_pickup_lifegate_date">Please select Life Gate.</string>
+    <string name="please_select_pallets">Please select Pallet or Non-pallets.</string>
     <string name="please_select_deli_time">Please select delivery time.</string>
     <string name="please_select_pickup_date">Please select pickup date.</string>
     <string name="please_select_pickup_time">Please select pickup time.</string>
@@ -124,7 +125,7 @@
     <string name="setting">Setting</string>
     <string name="notification">Notifications</string>
     <string name="logout">Logout</string>
-    <string name="delivery_history">Delivery history</string>
+    <string name="delivery_history">Completed orders</string>
 
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -241,7 +242,7 @@
 
     <string name="reschedule">Reschedule</string>
     <string name="cancel">Cancel</string>
-    <string name="cancelled">Cancelled</string>
+    <string name="cancelled">Cancelined</string>
 
     <string name="pickupinfo_d_txt">Pickup Info</string>
     <string name="dropoff_d_txt">Drop off address</string>
@@ -313,6 +314,7 @@
     <string name="us_dollar">\u0024</string>
     <string name="mile">Mile</string>
 
+
     <string name="permission_rationale">Location permission is needed for core functionality</string>
     <string name="permission_denied_explanation">Permission was denied, but is needed for core
         functionality.</string>
@@ -343,10 +345,15 @@
     <string name="driver_id">Driver Id</string>
 
     <string name="not_available">This delivery option is not available at this time.</string>
+<!--    AIzaSyDib3Zi38kkErxua5hEoYyoFpBdpqPeB9U-->
+<!--    <string name="google_maps_key">AIzaSyC8zLVIAUFLybEitHDR2JviLTXJy7JVeZc</string>-->
 
+    <!-- TODO: Remove or change this old text -->
     <string name="google_maps_key">AIzaSyC7NOJ5VbOZ2uzheASfYPZVPMniO0QAcys</string>
-<!--    <string name="google_maps_key">AIzaSyBzst3J6xQNWRjHOynWWPY8LGgsXT98rt4</string>-->
+    <!-- TODO: Remove or change this old text -->
 
+    <!--    <string name="google_maps_key">AIzaSyBzst3J6xQNWRjHOynWWPY8LGgsXT98rt4</string>-->
+<!--    <string name="google_maps_key">AIzaSyAElsqBvS7cc1RTh0VrN9lWAYVK5Zl0gzw</string> dec32019-->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -357,7 +364,7 @@
     <string name="inside_pick">Inside Pickup</string>
     <string name="lift_gate">Lift gate</string>
     <string name="number_of_pallets">Number of Pallets</string>
-    <string name="total_weight_of_the_package">Total weight(LBS) of the Package.</string>.
+    <string name="total_weight_of_the_package">Total weight(lbs) of the Package.</string>.
     <string name="good_width">Width (inch)</string>
     <string name="good_height">Height (inch)</string>
     <string name="good_length">Length (inch)</string>
@@ -370,5 +377,75 @@
     <string name="multiple_delivery">Multiple</string>
     <string name="express_delivery">Express</string>
     <string name="enter_vaild_number">Enter vaild number</string>
+
+    <string name="above_30_mile">Order exceeded  30 miles, will proceed as single shipment.</string>
+    <string name="payment_information">Payment Information</string>
+
+
+    <string name="addPayment">Add Payment Method</string>
+    <string name="pay">Pay</string>
+    <string name="addThreeDSecureCard">Add Source</string>
+    <string name="addThreeDSecureCardSync">Add Source Rx</string>
+    <string name="paymentMethods">Payment Methods</string>
+
+    <string name="endingIn">Card ending in </string>
+    <string name="progressMessage">Creating Token&#8230;</string>
+    <string name="progressPayment">Please wait&#8230;</string>
+
+    <string name="validationErrors">Validation Errors</string>
+
+    <string name="create_card_tokens">Create Card Tokens</string>
+    <string name="create_card_payment_methods">Create Card PaymentMethods</string>
+    <string name="create_three_d_secure">Create 3DS Sources</string>
+    <string name="createSource">Creating source&#8230;</string>
+    <string name="customer_payment_data_example">Customer Payment Selection</string>
+    <string name="launch_customer_session">Customer Session</string>
+    <string name="launch_pay_with_google">Pay with Google</string>
+    <string name="launch_payment_session">Payment Session</string>
+    <string name="launch_payment_session_from_fragment">Fragment Examples</string>
+    <string name="create_asynctask">Create Token with AsyncTask</string>
+    <string name="create_rxjava">Create Token with RxJava</string>
+    <string name="select_add_card">Select or add card</string>
+    <string name="selected_card">Selected card:</string>
+    <string name="updatedSources">Source results</string>
+
+    <string name="payment_session_select_payment">Select Payment Method</string>
+    <string name="payment_session_select_shipping">Set Shipping Information</string>
+    <string name="payment_session_data">Payment Session Data</string>
+    <string name="add_payment_method_footer">Please read and review our <a href="https://stripe.com/privacy">privacy policy</a>.</string>
+
+    <string name="label_source_type">Type</string>
+    <string name="label_3ds_status">3DS status</string>
+    <string name="label_source_state">Status</string>
+    <string name="label_source_id">ID Last 6</string>
+
+    <string name="sample_card_requiring_3ds">4000 0000 0000 3063</string>
+
+    <string name="pay_with_google_content_description">Pay with Google</string>
+
+    <string name="creating_payment_intent">Creating PaymentIntent&#8230;</string>
+
+    <string name="creating_setup_intent">Creating SetupIntent&#8230;</string>
+
+    <string name="authentication_dialog_title">Authentication required</string>
+    <string name="authentication_dialog_message">Authenticate %1$s ending in %2$s?</string>
+    <string name="pay_with_google">Pay with Google</string>
+
+    <!-- Payment Confirmation and Authentication example -->
+    <string name="payment_auth_example">Payment Intent &amp; Setup Intent Confirmation</string>
+    <string name="auth_payment_intent">Authenticate PaymentIntent</string>
+    <string name="auth_setup_intent">Authenticate SetupIntent</string>
+    <string name="buy_with_3ds2">Buy with 3DS2</string>
+    <string name="buy_with_3ds1">Buy with 3DS1</string>
+    <string name="setup">Buy in the Future!</string>
+    <string name="payment_intent_status">PaymentIntent status: %s</string>
+    <string name="setup_intent_status">SetupIntent status: %s</string>
+    <string name="payment_auth_intro">Tapping the button below will create a PaymentIntent then attempt to confirm it.</string>
+    <string name="setup_auth_intro">Tapping the button below will create a SetupIntent then attempt to confirm it.</string>
+    <string name="enter_valid_card_number">Please enter valid card number.</string>
+    <string name="pallets">Pallets</string>
+    <string name="non_pallets">Non-Pallets</string>
+    <string name="cardholder_s_name">Cardholder\'s Name</string>
+    <string name="please_enter_vaild_cardholder_s_name">Please enter vaild cardholder\'s name.</string>
 
 </resources>

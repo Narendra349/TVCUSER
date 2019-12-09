@@ -64,7 +64,7 @@ public class PriceDistanceDTO {
         private String price;
         @SerializedName("pallets")
         @Expose
-        private ArrayList<Vehicle.Pallets> pallets;
+        private ArrayList<Pallets> pallets;
 
         public String getMin_mile() {
             return min_mile;

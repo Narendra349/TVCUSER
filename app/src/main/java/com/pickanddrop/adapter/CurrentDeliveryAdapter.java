@@ -1,6 +1,12 @@
 package com.pickanddrop.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +18,10 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.pickanddrop.R;
+import com.pickanddrop.activities.DrawerContentSlideActivity;
 import com.pickanddrop.dto.DeliveryDTO;
+import com.pickanddrop.fragment.BaseFragment;
+import com.pickanddrop.fragment.CurrentList;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.ImageViewCircular;
@@ -22,7 +31,7 @@ import com.pickanddrop.utils.Utilities;
 
 import java.util.ArrayList;
 
-public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDeliveryAdapter.ViewHolder> implements AppConstants {
+public class CurrentDeliveryAdapter extends  RecyclerView.Adapter<CurrentDeliveryAdapter.ViewHolder> implements AppConstants {
     private Context context;
     private OnItemClickListener.OnItemClickCallback onItemClickCallback;
     private AppSession appSession;
@@ -30,6 +39,9 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
     private RequestOptions requestOptions, requestOptions1;
     private String status = "";
     private ArrayList<DeliveryDTO.Data> deliveryDTOArrayList;
+    CurrentList currentList = new CurrentList();
+    Bundle bundle = new Bundle();
+
 
 
     public CurrentDeliveryAdapter(Context context, ArrayList<DeliveryDTO.Data> deliveryDTOArrayList, OnItemClickListener.OnItemClickCallback onItemClickCallback, String status) {
@@ -43,8 +55,8 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);
@@ -89,11 +101,36 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
             viewHolder.tvPickLoc.setText(context.getString(R.string.delivery_datein_txt) + " - " + deliveryDTOArrayList.get(position).getPickupCountryCode());
             viewHolder.tvDriverName.setText(context.getString(R.string.driver_name) + " - " + deliveryDTOArrayList.get(position).getFirstname() + " " + deliveryDTOArrayList.get(position).getLastname());
             viewHolder.tvDriverNo.setText(context.getString(R.string.delivery_contact_name_txt) + " - " + deliveryDTOArrayList.get(position).getDropoffFirstName() + " " + deliveryDTOArrayList.get(position).getDropoffLastName());
+
             viewHolder.tvPriceText.setText(deliveryDTOArrayList.get(position).getMessage());
             Glide.with(context)
                     .setDefaultRequestOptions(requestOptions)
                     .load(deliveryDTOArrayList.get(position).getProfileImage())
                     .into(viewHolder.ivProfile);
+
+            viewHolder.fullClick.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switch (deliveryDTOArrayList.get(position).getDeliveryStatus()) {
+                        case "6":
+                            bundle.putString(context.getString(R.string.cur_delivery), context.getString(R.string.cur_delivery));
+                            currentList.setArguments(bundle);
+                            addFragmentWithoutRemove(R.id.container_main, currentList, "CurrentList");
+                            break;
+                        case "7":
+                            bundle.putString(context.getString(R.string.cur_delivery), context.getString(R.string.cur_delivery));
+                            currentList.setArguments(bundle);
+                            addFragmentWithoutRemove(R.id.container_main, currentList, "CurrentList");
+                            break;
+                        case "4":
+                            bundle.putString(PN_VALUE, context.getString(R.string.delivery_history));
+                            currentList.setArguments(bundle);
+                            addFragmentWithoutRemove(R.id.container_main, currentList, "CurrentList");
+                            break;
+                    }
+                }
+            });
+
         } else if (status.equalsIgnoreCase(context.getString(R.string.delivery_history))) {
             viewHolder.tvPickLoc.setVisibility(View.VISIBLE);
             viewHolder.tvDropLoc.setVisibility(View.VISIBLE);
@@ -125,7 +162,7 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
 
             Glide.with(context)
                     .setDefaultRequestOptions(requestOptions)
-                    .load(deliveryDTOArrayList.get(position).getProfileImage())
+                    .load(IMAGE_URL+deliveryDTOArrayList.get(position).getReceivedUserImage())
                     .into(viewHolder.ivProfile);
         } else {
             viewHolder.tvPickLoc.setVisibility(View.VISIBLE);
@@ -133,9 +170,19 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
             viewHolder.tvDeliveryContactNo.setVisibility(View.VISIBLE);
             viewHolder.tvDeliveryContactName.setVisibility(View.VISIBLE);
             viewHolder.tvPrice.setVisibility(View.VISIBLE);
+            viewHolder.tvOrderStatus.setVisibility(View.VISIBLE);
+            if(deliveryDTOArrayList.get(position).getDeliveryStatus().equals("4")){
+                viewHolder.tvOrderStatus.setText("Delivered");
+            }else if(deliveryDTOArrayList.get(position).getDeliveryStatus().equals("6")){
+                viewHolder.tvOrderStatus.setText("DRIVER HAS BEEN ASSIGNED");
+            }else if(deliveryDTOArrayList.get(position).getDeliveryStatus().equals("7")){
+                viewHolder.tvOrderStatus.setText("DRIVER HAS BEEN PICKED YOUR ORDER");
+            }else if(!deliveryDTOArrayList.get(position).getDeliveryStatus().equals("7") || !deliveryDTOArrayList.get(position).getDeliveryStatus().equals("6")){
+                viewHolder.tvOrderStatus.setVisibility(View.GONE);
+            }
 
             viewHolder.tvDeliveryId.setText(context.getString(R.string.delivery_id_txt) + " - " + deliveryDTOArrayList.get(position).getOrderId());
-            viewHolder.tvDeliveryDate.setText(context.getString(R.string.delivery_datein_txt) + " - " + deliveryDTOArrayList.get(position).getPickupDate());
+            viewHolder.tvDeliveryDate.setText(context.getString(R.string.pickup_date_qua_txt) + " - " + deliveryDTOArrayList.get(position).getPickupDate());
             viewHolder.tvPickLoc.setText(context.getString(R.string.pickup_loc_txt) + " - " + deliveryDTOArrayList.get(position).getPickupaddress());
             viewHolder.tvDropLoc.setText(context.getString(R.string.delivery_loc_txt) + " - " + deliveryDTOArrayList.get(position).getDropoffaddress());
 
@@ -174,7 +221,6 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
             }
         }
 
-
         if (deliveryDTOArrayList.get(position).getVehicleType() != null && deliveryDTOArrayList.get(position).getVehicleType().equalsIgnoreCase(context.getString(R.string.bike))) {
             Glide.with(context)
                     .setDefaultRequestOptions(requestOptions1)
@@ -198,9 +244,9 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
         }
 
         if (deliveryDTOArrayList.get(position).getDeliveryType() != null) {
-            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("2HOUR")) {
+            if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("single")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.two_hours));
-            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("4HOUR")) {
+            } else if (deliveryDTOArrayList.get(position).getDeliveryType().equalsIgnoreCase("multiple")) {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.four_hours));
             } else {
                 viewHolder.viewHours.setBackgroundColor(context.getResources().getColor(R.color.same_hours));
@@ -222,14 +268,18 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvPriceText, tvPrice, tvDeliveryId, tvDeliveryDate, tvPickLoc, tvDropLoc, tvDeliveryContactName, tvDeliveryContactNo, tvDriverName, tvDriverNo;
+        private TextView tvPriceText, tvPrice, tvDeliveryId, tvDeliveryDate, tvPickLoc, tvDropLoc, tvDeliveryContactName,
+                tvDeliveryContactNo, tvDriverName, tvDriverNo,tvOrderStatus;
         private ImageViewCircular ivProfile;
         private ImageView ivVehicle;
         private View viewHours;
         private RatingBar ratingBar;
+        ConstraintLayout fullClick;
 
         public ViewHolder(View view) {
             super(view);
+            tvOrderStatus = (TextView) view.findViewById(R.id.tv_order_status);
+            fullClick = (ConstraintLayout) view.findViewById(R.id.full_click);
             tvDeliveryId = (TextView) view.findViewById(R.id.tv_delivery_id);
             tvDeliveryDate = (TextView) view.findViewById(R.id.tv_delivery_date);
             tvPickLoc = (TextView) view.findViewById(R.id.tv_pickup_location);
@@ -246,7 +296,17 @@ public class CurrentDeliveryAdapter extends RecyclerView.Adapter<CurrentDelivery
             ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
         }
     }
-
+    public void addFragmentWithoutRemove(int containerViewId, Fragment fragment, String fragmentName) {
+        String tag = (String) fragment.getTag();
+        ((DrawerContentSlideActivity)context).getSupportFragmentManager().beginTransaction()
+                // remove fragment from fragment manager
+                //fragmentTransaction.remove(getActivity().getSupportFragmentManager().findFragmentByTag(tag));
+                // add fragment in fragment manager
+                .add(containerViewId, fragment, fragmentName)
+                // add to back stack
+                .addToBackStack(tag)
+                .commit();
+    }
 }
 
 

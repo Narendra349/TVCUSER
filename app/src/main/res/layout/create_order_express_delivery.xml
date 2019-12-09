@@ -310,6 +310,30 @@
                     android:hint="@string/type_of_goods"
                     android:imeOptions="actionNext"
                     android:inputType="textCapSentences" />
+                <RadioGroup
+                    android:id="@+id/rg_pallets"
+                    android:layout_marginTop="@dimen/activity_margin_normal_"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/rb_pallets"
+                        android:text="@string/pallets"
+                        style="@style/radio_button_style"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <RadioButton
+                        android:clickable="false"
+                        android:text="@string/non_pallets"
+                        android:id="@+id/rb_non_pallets"
+                        android:layout_marginLeft="@dimen/activity_margin_normal"
+                        style="@style/radio_button_style"
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                </RadioGroup>
 
                 <EditText
                     android:id="@+id/et_pallets_count"

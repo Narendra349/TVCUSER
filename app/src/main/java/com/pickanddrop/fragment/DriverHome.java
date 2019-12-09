@@ -78,7 +78,6 @@ public class DriverHome extends BaseFragment implements AppConstants, View.OnCli
         context = getActivity();
         appSession = new AppSession(context);
         utilities = Utilities.getInstance(context);
-
         initView();
         Utilities.hideKeyboard(view);
 
@@ -271,9 +270,9 @@ public class DriverHome extends BaseFragment implements AppConstants, View.OnCli
                                     mMap.clear();
                                     for (int i = 0; i < deliveryDTOArrayList.size(); i++) {
                                         int imageView;
-                                        if (deliveryDTOArrayList.get(i).getDeliveryType().equalsIgnoreCase("2HOUR")) {
+                                        if (deliveryDTOArrayList.get(i).getDeliveryType().equalsIgnoreCase("single")) {
                                             imageView = R.drawable.pin1;
-                                        } else if (deliveryDTOArrayList.get(i).getDeliveryType().equalsIgnoreCase("4HOUR")) {
+                                        } else if (deliveryDTOArrayList.get(i).getDeliveryType().equalsIgnoreCase("multiple")) {
                                             imageView = R.drawable.pin2;
                                         } else {
                                             imageView = R.drawable.bike_pin;

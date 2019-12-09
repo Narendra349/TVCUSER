@@ -38,7 +38,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -55,6 +54,7 @@ import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.pickanddrop.BuildConfig;
 import com.pickanddrop.R;
 import com.pickanddrop.adapter.MenuAdapter;
 import com.pickanddrop.api.APIClient;
@@ -64,14 +64,12 @@ import com.pickanddrop.dto.OtherDTO;
 import com.pickanddrop.fragment.ChangePassword;
 import com.pickanddrop.fragment.CurrentList;
 import com.pickanddrop.fragment.DriverHome;
-import com.pickanddrop.fragment.Home;
 import com.pickanddrop.fragment.Profile;
 import com.pickanddrop.fragment.UserHome;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.ImageViewCircular;
 import com.pickanddrop.utils.OnItemClickListener;
-import com.pickanddrop.utils.OnTaskCompleted;
 import com.pickanddrop.utils.Utilities;
 
 
@@ -92,7 +90,7 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
     private DrawerLayout drawerLayout;
     private LinearLayout content;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private TextView mTitle, tvName;
+    private TextView mTitle, tvName, tvVersion;
     private Toolbar toolbar;
     private DrawerLayoutBinding drawerLayoutBinding;
     private LinearLayoutManager linearLayoutManager;
@@ -252,6 +250,7 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
         if (appSession.getUserType().equals(DRIVER)) {
             replaceFragmentWithoutBack(R.id.container_main, new DriverHome(), "DriverHome");
         } else {
+//            replaceFragmentWithoutBack(R.id.container_main, new CardStripePayment(), "CardStripePayment");
 //            replaceFragmentWithoutBack(R.id.container_main, new Home(), "Home");
             replaceFragmentWithoutBack(R.id.container_main, new UserHome(), "UserHome");
         }
@@ -264,13 +263,19 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         tvName = (TextView) findViewById(R.id.tv_name);
         ivProfile = (ImageViewCircular) findViewById(R.id.iv_profile);
+        tvVersion = (TextView) findViewById(R.id.tv_version);
 
         setSupportActionBar(toolbar);
         drawerLayout.setScrimColor(Color.TRANSPARENT);
         menuList = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(this);
         drawerLayoutBinding.rvMenu.setLayoutManager(linearLayoutManager);
-
+        try {
+            String versionName = BuildConfig.VERSION_NAME;
+            tvVersion.setText("Version : " + versionName);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         getSupportActionBar().hide();
 
         HashMap<String, String> stringHashMap = new HashMap<>();
@@ -368,7 +373,6 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
             } else if (menuList.get(position).get(PN_NAME).equalsIgnoreCase(getString(R.string.delivery_history))) {
                 bundle.putString(PN_VALUE, PN_VALUE);
                 currentList.setArguments(bundle);
-
                 replaceFragmentWithoutBack(R.id.container_main, currentList, "CurrentList");
                 drawerLayout.closeDrawer(GravityCompat.START);
             }
@@ -379,8 +383,8 @@ public class DrawerContentSlideActivity extends AppCompatActivity implements App
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user);
+        requestOptions.error(R.drawable.user);
 
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)

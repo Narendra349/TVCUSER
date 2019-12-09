@@ -43,8 +43,8 @@ public class NearByAdapter extends RecyclerView.Adapter<NearByAdapter.ViewHolder
         requestOptions = new RequestOptions();
         requestOptions.centerCrop();
         requestOptions.override(150, 150);
-        requestOptions.placeholder(R.drawable.user_ic);
-        requestOptions.error(R.drawable.user_ic);
+        requestOptions.placeholder(R.drawable.user_praba);
+        requestOptions.error(R.drawable.user_praba);
 
         requestOptions1 = new RequestOptions();
         requestOptions1.override(100, 100);

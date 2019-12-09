@@ -3,32 +3,40 @@
     package="com.pickanddrop">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@drawable/loginlogo"
         android:label="@string/app_name"
         android:roundIcon="@drawable/loginlogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.CheckoutActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SplashActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter android:label="@string/app_name">
@@ -36,19 +44,19 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- Accepts URIs that begin with "http://www.example.com/gizmos” -->
-                <data android:scheme="http"
+                <data
                     android:host="18.221.13.149"
-                    android:pathPrefix="/pickanddeliver/admin/index.php/ApiController/reset-password" />
-                <!-- note that the leading "/" is required for pathPrefix-->
+                    android:pathPrefix="/pickanddeliver/admin/index.php/ApiController/reset-password"
+                    android:scheme="http" />
+                <!-- note that the leading "/" is required for pathPrefix -->
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.DrawerContentSlideActivity"
-            android:label="@string/title_activity_main"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -65,7 +73,6 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:theme="@style/Theme.Transparent"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
         <activity
             android:name=".activities.NotificationDialog"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -75,16 +82,15 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-<!--        <meta-data-->
-<!--            android:name="com.google.android.geo.API_KEY"-->
-<!--            android:value="AIzaSyDlsh7C8aFtDBA0LV2tQUUMoL8AXxddo5g" />-->
-
+            android:value="@string/google_maps_key" /> <!-- <meta-data -->
+        <!-- android:name="com.google.android.geo.API_KEY" -->
+        <!-- android:value="AIzaSyDlsh7C8aFtDBA0LV2tQUUMoL8AXxddo5g" /> -->
         <service
             android:name=".activities.LocationUpdatesIntentService"
             android:exported="false" />
 
-        <receiver android:name=".activities.LocationUpdatesBroadcastReceiver"
+        <receiver
+            android:name=".activities.LocationUpdatesBroadcastReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.location.sample.backgroundlocationupdates.LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES" />
@@ -97,4 +103,5 @@
             </intent-filter>
         </service>
     </application>
+
 </manifest>

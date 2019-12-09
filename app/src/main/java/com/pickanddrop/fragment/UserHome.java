@@ -1,12 +1,15 @@
 package com.pickanddrop.fragment;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -15,6 +18,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.view.GravityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,11 +47,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.pickanddrop.R;
 import com.pickanddrop.activities.DrawerContentSlideActivity;
+import com.pickanddrop.activities.SplashActivity;
 import com.pickanddrop.api.APIClient;
 import com.pickanddrop.api.APIInterface;
 import com.pickanddrop.databinding.UserHomeBinding;
 import com.pickanddrop.databinding.UserHomeBinding;
 import com.pickanddrop.dto.LocationDTO;
+import com.pickanddrop.dto.OtherAddCountDTO;
+import com.pickanddrop.dto.OtherDTO;
 import com.pickanddrop.utils.AppConstants;
 import com.pickanddrop.utils.AppSession;
 import com.pickanddrop.utils.ImageViewCircular;
@@ -79,8 +86,8 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
     private String TAG = UserHome.class.getName();
     private ArrayList<LocationDTO.Datum> datumArrayList;
     private int a = 0;
-    private Handler handler;
-    private Runnable myRunnable;
+    public Handler handler;
+    public Runnable myRunnable;
     private Double latitude = 0.0, longitude = 0.0;
     private FusedLocationProviderClient fusedLocationClient;
     private boolean fourStatus = false, sameStatus = false;
@@ -129,6 +136,8 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
         }
     };
 
+
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -145,7 +154,69 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
         userHomeBinding.btnFour.setOnClickListener(this);
         userHomeBinding.btnSame.setOnClickListener(this);
         userHomeBinding.llPickUp.setOnClickListener(this);
+        userHomeBinding.tvNoti.setOnClickListener(this);
+
+        handler = new Handler();
+//        final Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                callGetNotifyCountApi();
+//                //Do something after 100ms
+//            }
+//        }, 100);
+        myRunnable = new Runnable() {
+            public void run() {
+//                Toast.makeText(context, "Handler Called", Toast.LENGTH_SHORT).show();
+//                getNearDriver(latitude, longitude);
+                callGetNotifyCountApi();
+                handler.postDelayed(myRunnable, 3000);
+            }
+        };
+        handler.post(myRunnable);
+//        callGetNotifyCountApi();
         setMap();
+    }
+    public void callGetNotifyCountApi() {
+        if (!utilities.isNetworkAvailable())
+            utilities.dialogOK(context, "", context.getResources().getString(R.string.network_error), context.getString(R.string.ok), false);
+        else {
+
+            Map<String, String> map = new HashMap<>();
+            map.put("user_id", appSession.getUser().getData().getUserId());
+            map.put(PN_APP_TOKEN, APP_TOKEN);
+
+            APIInterface apiInterface = APIClient.getClient();
+            Call<OtherAddCountDTO> call = apiInterface.callGetNotifyCount(map);
+            call.enqueue(new Callback<OtherAddCountDTO>() {
+                @Override
+                public void onResponse(Call<OtherAddCountDTO> call, Response<OtherAddCountDTO> response) {
+                    if (response.isSuccessful()) {
+                        try {
+                            if (response.body().getResult().equalsIgnoreCase("success")) {
+                                if(Integer.parseInt(response.body().getData().getCount()) > 99){
+                                    userHomeBinding.tvNotiCount.setText("99+");
+                                }else {
+                                    userHomeBinding.tvNotiCount.setTextSize(10);
+                                    userHomeBinding.tvNotiCount.setText(response.body().getData().getCount());
+                                }
+
+                            } else {
+                                utilities.dialogOK(context, "", response.body().getMessage(), context.getString(R.string.ok), false);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<OtherAddCountDTO> call, Throwable t) {
+                    utilities.dialogOK(context, "", context.getResources().getString(R.string.server_error), context.getResources().getString(R.string.ok), false);
+                    Log.e(TAG, t.toString());
+                }
+            });
+        }
     }
 
 
@@ -185,6 +256,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                 }
                 mMap.setMyLocationEnabled(true);
                 final LatLng latLng = mMap.getCameraPosition().target;
+                callGetNotifyCountApi();
                 getNearDriver(latLng.latitude, latLng.longitude);
             }
         } catch (Exception e) {
@@ -195,27 +267,28 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
     @Override
     public void onResume() {
         super.onResume();
-//        handler = new Handler();
-//        myRunnable = new Runnable() {
-//            public void run() {
+        handler = new Handler();
+        myRunnable = new Runnable() {
+            public void run() {
 //                Toast.makeText(context, "Handler Called", Toast.LENGTH_SHORT).show();
 //                getNearDriver(latitude, longitude);
-//                handler.postDelayed(myRunnable, 30000);
-//            }
-//        };
-//
-//        handler.postDelayed(myRunnable, 10000);
+                callGetNotifyCountApi();
+                handler.postDelayed(myRunnable, 3000);
+            }
+        };
+        handler.post(myRunnable);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-//            handler.removeCallbacks(myRunnable);
+            handler.removeCallbacks(myRunnable);
     }
 
     @Override
     public void onClick(View view) {
         CreateOrderExpressDelivery createOrderExpressDelivery = new CreateOrderExpressDelivery();
+        CurrentList currentList = new CurrentList();
         Bundle bundle = new Bundle();
         switch (view.getId()) {
             case R.id.iv_back:
@@ -233,6 +306,11 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                 } catch (GooglePlayServicesRepairableException | GooglePlayServicesNotAvailableException e) {
                     e.printStackTrace();
                 }
+                break;
+            case R.id.tv_noti:
+                bundle.putString(PN_NAME, PN_NAME);
+                currentList.setArguments(bundle);
+                addFragmentWithoutRemove(R.id.container_main, currentList, "CurrentList");
                 break;
             case R.id.iv_current_loc:
 //                if (DrawerContentSlideActivity.mLocation != null) {
@@ -265,6 +343,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                 if (sameStatus) {
                     utilities.dialogOK(context, "", getString(R.string.not_available), getString(R.string.ok), false);
                 } else {
+                    handler.removeCallbacks(myRunnable);
                     bundle.putString("delivery_type", "express");
                     createOrderExpressDelivery.setArguments(bundle);
                     addFragmentWithoutRemove(R.id.container_main, createOrderExpressDelivery, "CreateOrderExpressDelivery");
@@ -335,12 +414,12 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                                 fourStatus = true;
 //                                fourStatus = false;
                                 userHomeBinding.btnFour.setEnabled(false);
-                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
+                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
                             } else {
 //                                fourStatus = false;
                                 fourStatus = true;
                                 userHomeBinding.btnFour.setEnabled(false);
-                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.4"));
+                                userHomeBinding.btnFour.setAlpha(Float.parseFloat("0.1"));
 //                                userHomeBinding.btnFour.setEnabled(true);
                             }
 
@@ -348,7 +427,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
 //                                sameStatus = true;
                                 sameStatus = false;
 //                                userHomeBinding.btnSame.setEnabled(false);
-//                                userHomeBinding.btnSame.setAlpha(Float.parseFloat("0.4"));
+//                                userHomeBinding.btnSame.setAlpha(Float.parseFloat("0.1"));
                             } else {
                                 sameStatus = false;
 //                                sameStatus = true;
@@ -387,8 +466,8 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
                                     requestOptions = new RequestOptions();
                                     requestOptions.centerCrop();
                                     requestOptions.override(40, 40);
-                                    requestOptions.placeholder(R.drawable.user_ic);
-                                    requestOptions.error(R.drawable.user_ic);
+                                    requestOptions.placeholder(R.drawable.user_praba);
+                                    requestOptions.error(R.drawable.user_praba);
                                     LocationDTO.Datum datum = (LocationDTO.Datum) marker.getTag();
                                     LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                                     View v = inflater.inflate(R.layout.marker_window, null);
@@ -451,7 +530,7 @@ public class UserHome extends BaseFragment implements AppConstants, View.OnClick
         pickupLong = latLng.longitude + "";
         userHomeBinding.tvPickupLocation.setText(getAddressFromLatLong(latLng.latitude, latLng.longitude, false));
 
-
+callGetNotifyCountApi();
 //        if (appSession.getLatitude() != null && !appSession.getLatitude().equals("") && !appSession.getLatitude().equals("0.0"))
         getNearDriver(latLng.latitude, latLng.longitude);
     }
